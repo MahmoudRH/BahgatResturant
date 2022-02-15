@@ -10,6 +10,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BahgatResturant">
         <activity
+            android:name=".ui.SignUpActivity"
+            android:exported="false"
+            android:label="@string/title_activity_sign_up"
+            android:theme="@style/Theme.BahgatResturant" />
+        <activity
+            android:name=".ui.WelcomeActivity"
+            android:exported="false"
+            android:label="@string/title_activity_welcome"
+            android:theme="@style/Theme.BahgatResturant" />
+        <activity
+            android:name=".ui.SignInActivity"
+            android:exported="false"
+            android:label="@string/title_activity_sign_in"
+            android:theme="@style/Theme.BahgatResturant" />
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"

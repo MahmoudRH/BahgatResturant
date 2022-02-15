@@ -1,4 +1,4 @@
-package com.mahmoudrh.bahgatresturant
+package com.mahmoudrh.bahgatresturant.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,9 +10,9 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.mahmoudrh.bahgatresturant.ui.theme.BahgatResturantTheme
+import com.mahmoudrh.bahgatresturant.ui.ui.theme.BahgatResturantTheme
 
-class MainActivity : ComponentActivity() {
+class WelcomeActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -22,7 +22,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Greeting("Android")
+                    Greeting2("Android")
                 }
             }
         }
@@ -30,14 +30,14 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String) {
+fun Greeting2(name: String) {
     Text(text = "Hello $name!")
 }
 
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview() {
+fun DefaultPreview2() {
     BahgatResturantTheme {
-        Greeting("Android")
+        Greeting2("Android")
     }
 }

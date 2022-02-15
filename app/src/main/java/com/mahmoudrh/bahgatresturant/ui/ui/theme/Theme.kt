@@ -1,4 +1,4 @@
-package com.mahmoudrh.bahgatresturant.ui.theme
+package com.mahmoudrh.bahgatresturant.ui.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
