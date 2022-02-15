@@ -40,4 +40,5 @@ fun DefaultPreview2() {
     BahgatResturantTheme {
         Greeting2("Android")
     }
+    //Samer test
 }
