@@ -17,27 +17,8 @@ class SignUpActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             BahgatResturantTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    Greeting3("Android")
-                }
+
             }
         }
-    }
-}
-
-@Composable
-fun Greeting3(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview3() {
-    BahgatResturantTheme {
-        Greeting3("Android")
     }
 }
