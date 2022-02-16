@@ -1,6 +1,8 @@
 package com.mahmoudrh.bahgatresturant.ui
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.BorderStroke
@@ -50,19 +52,19 @@ class WelcomeActivity : ComponentActivity() {
                     )
                     FilledButton(
                         modifier = Modifier
-                            .fillMaxWidth(0.9f)
+                            .padding(horizontal = 34.dp)
                             .padding(top = 56.dp),
                         text = "Login"
                     ) {
-                    /** To Login Screen*/
+                        startActivity(Intent(this@WelcomeActivity, SignInActivity::class.java))
                     }
                     BorderButton(
                         modifier = Modifier
-                            .fillMaxWidth(0.9f)
+                            .padding(horizontal = 34.dp)
                             .padding(top = 24.dp),
-                        text = "Create an Account"
-                    ) {
-                     /** To Sign Up Screen*/
+                        text = "Create an Account",
+                    ){
+                        startActivity(Intent(this@WelcomeActivity, SignUpActivity::class.java))
                     }
                 }
             }

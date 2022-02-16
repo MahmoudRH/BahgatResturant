@@ -2,16 +2,11 @@ package com.mahmoudrh.bahgatresturant.ui.ui.theme
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.OutlinedButton
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.material.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -63,7 +58,7 @@ fun Logo(modifier: Modifier) {
 @Composable
 fun FilledButton(modifier: Modifier = Modifier, text: String, onClick: () -> Unit) {
     Button(
-        modifier = modifier.height(56.dp),
+        modifier = modifier.height(56.dp).fillMaxWidth(),
         onClick = onClick,
         colors = ButtonDefaults.buttonColors(backgroundColor = orange),
         shape = RoundedCornerShape(28.dp),
@@ -84,7 +79,7 @@ fun FilledButton(modifier: Modifier = Modifier, text: String, onClick: () -> Uni
 @Composable
 fun BorderButton(modifier: Modifier, text: String, onClick: () -> Unit) {
     OutlinedButton(
-        modifier = modifier.height(56.dp),
+        modifier = modifier.height(56.dp).fillMaxWidth(),
         onClick = onClick,
         shape = RoundedCornerShape(28.dp),
         border = BorderStroke(width = 1.dp, color = orange),
@@ -99,5 +94,71 @@ fun BorderButton(modifier: Modifier, text: String, onClick: () -> Unit) {
                 fontWeight = FontWeight.SemiBold
             )
         )
+    }
+}
+
+@Composable
+fun AppTextField(hint: String){
+    var textFieldState by remember {
+        mutableStateOf("")
+    }
+    TextField(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 34.dp),
+        value = textFieldState,
+        colors = TextFieldDefaults.textFieldColors(
+            backgroundColor = gray,
+            cursorColor = orange,
+            disabledLabelColor = gray,
+            focusedIndicatorColor = Color.Transparent,
+            unfocusedIndicatorColor = Color.Transparent
+        ),
+        onValueChange = {
+            textFieldState = it
+        },
+        placeholder = {Text(text = hint, style = TextStyle(color = placeholderColor, fontSize = 14.sp, fontFamily = metropolisFontFamily), modifier = Modifier.padding(start = 15.dp, top = 3.dp))},
+        shape = RoundedCornerShape(28.dp),
+    )
+}
+
+@Composable
+fun Footer(modifier: Modifier = Modifier, text: String, textButton: String, onClick: () -> Unit){
+    Row(modifier.fillMaxWidth().padding(bottom = 15.dp), horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically) {
+        Text(
+            text = text,
+            style = TextStyle(fontSize = 14.sp, color = secondaryFontColor, fontFamily = metropolisFontFamily)
+        )
+        TextButton(onClick = onClick) {
+            Text(textButton, style = TextStyle(fontSize = 14.sp, color = orange, fontFamily = metropolisFontFamily, fontWeight = FontWeight.Bold))
+        }
+    }
+}
+
+@Composable
+fun ButtonWithImage(modifier: Modifier = Modifier, image: Int, color: Color, text: String, onClick: () -> Unit) {
+    Button(
+        modifier = modifier.height(55.dp).fillMaxWidth(),
+        onClick = onClick,
+        colors = ButtonDefaults.buttonColors(backgroundColor = color),
+        shape = RoundedCornerShape(28.dp),
+        elevation = null
+    ) {
+        Row(horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically) {
+            Image(
+                painter = painterResource(id = image),
+                contentDescription = "icon",
+            )
+            Text(
+                modifier = Modifier.padding(start = 33.dp),
+                text = text,
+                style = TextStyle(
+                    color = Color.White,
+                    fontSize = 14.sp,
+                    fontFamily = metropolisFontFamily,
+                    fontWeight = FontWeight.SemiBold
+                )
+            )
+        }
     }
 }
