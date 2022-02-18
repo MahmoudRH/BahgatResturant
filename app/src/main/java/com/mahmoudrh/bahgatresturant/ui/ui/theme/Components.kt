@@ -2,8 +2,10 @@ package com.mahmoudrh.bahgatresturant.ui.ui.theme
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
@@ -13,6 +15,7 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
@@ -20,10 +23,7 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.ImeAction
-import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.text.input.*
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -112,7 +112,14 @@ fun BorderButton(modifier: Modifier, text: String, onClick: () -> Unit) {
 
 @ExperimentalComposeUiApi
 @Composable
-fun AppTextField(modifier: Modifier = Modifier, hint: String, keyboardType: KeyboardType = KeyboardType.Text, action:ImeAction = ImeAction.Next) {
+fun AppTextField(
+    modifier: Modifier = Modifier,
+    hint: String,
+    keyboardType: KeyboardType = KeyboardType.Text,
+    action: ImeAction = ImeAction.Next,
+    rounded: Int = 28,
+    fontSize: Int = 14,
+) {
     var textFieldState by remember {
         mutableStateOf("")
     }
@@ -138,12 +145,12 @@ fun AppTextField(modifier: Modifier = Modifier, hint: String, keyboardType: Keyb
                 text = hint,
                 style = TextStyle(
                     color = placeholderColor,
-                    fontSize = 14.sp,
+                    fontSize = fontSize.sp,
                     fontFamily = metropolisFontFamily
                 )
             )
         },
-        shape = RoundedCornerShape(28.dp),
+        shape = RoundedCornerShape(rounded.dp),
         keyboardOptions = KeyboardOptions(keyboardType = keyboardType, imeAction = action),
         keyboardActions = KeyboardActions(
             onNext = { focusManager.moveFocus(FocusDirection.Down) },
@@ -226,5 +233,59 @@ fun ButtonWithImage(
                 )
             )
         }
+    }
+}
+
+@Composable
+fun VTextFiled(action: ImeAction = ImeAction.Next) {
+    var value by remember { mutableStateOf(TextFieldValue("")) }
+    BasicTextField(
+        modifier = Modifier.width(56.dp).height(56.dp),
+        value = value,
+        onValueChange = { value = it },
+        decorationBox = { innerTextField ->
+            Row(
+                Modifier
+                    .background(gray, RoundedCornerShape(percent = 12))
+                    .padding(start = 20.dp, top = 12.dp)
+            ) {
+                if (value.text.isEmpty()) {
+                    Text(
+                        "*",
+                        style = TextStyle(
+                            color = primaryFontColor,
+                            fontSize = 37.sp,
+                            fontFamily = metropolisFontFamily
+                        ),
+                    )
+                }
+                innerTextField()  //<-- Add this
+            }
+        },
+        textStyle = TextStyle(
+            color = primaryFontColor,
+            fontSize = 25.sp,
+            fontFamily = metropolisFontFamily
+        ),
+        singleLine = true,
+        cursorBrush = SolidColor(orange),
+    )
+}
+
+@Composable
+fun VerifyTextField() {
+    Row(
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Spacer(modifier = Modifier.width(28.dp))
+        VTextFiled()
+        Spacer(modifier = Modifier.width(28.dp))
+        VTextFiled()
+        Spacer(modifier = Modifier.width(28.dp))
+        VTextFiled()
+        Spacer(modifier = Modifier.width(28.dp))
+        VTextFiled(action = ImeAction.Done)
+        Spacer(modifier = Modifier.width(28.dp))
     }
 }
