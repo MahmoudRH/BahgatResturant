@@ -16,6 +16,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.input.key.Key
+import androidx.compose.ui.input.key.key
+import androidx.compose.ui.input.key.onKeyEvent
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
@@ -154,7 +157,10 @@ fun AppTextField(
         keyboardOptions = KeyboardOptions(keyboardType = keyboardType, imeAction = action),
         keyboardActions = KeyboardActions(
             onNext = { focusManager.moveFocus(FocusDirection.Down) },
-            onDone = { keyboardController?.hide() }
+            onDone = {
+                keyboardController?.hide()
+                focusManager.clearFocus()
+            }
         ),
         singleLine = true,
         textStyle = TextStyle(
@@ -236,20 +242,37 @@ fun ButtonWithImage(
     }
 }
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun VTextFiled(action: ImeAction = ImeAction.Next) {
-    var value by remember { mutableStateOf(TextFieldValue("")) }
+    var value by remember { mutableStateOf("") }
+    val keyboardController = LocalSoftwareKeyboardController.current
+    val focusManager = LocalFocusManager.current
     BasicTextField(
-        modifier = Modifier.width(56.dp).height(56.dp),
+        modifier = Modifier
+            .width(56.dp)
+            .height(56.dp)
+            .onKeyEvent {
+                if (it.key.keyCode != Key.Backspace.keyCode)
+                    if (action == ImeAction.Next) {
+                        focusManager.moveFocus(FocusDirection.Right)
+                    } else {
+                        keyboardController?.hide()
+                        focusManager.clearFocus()
+                    }
+                true
+            },
         value = value,
-        onValueChange = { value = it },
+        onValueChange = {
+            value = if (it.isNotEmpty()) it[0].toString() else ""
+        },
         decorationBox = { innerTextField ->
-            Row(
+            Box(
                 Modifier
                     .background(gray, RoundedCornerShape(percent = 12))
                     .padding(start = 20.dp, top = 12.dp)
             ) {
-                if (value.text.isEmpty()) {
+                if (value.isEmpty()) {
                     Text(
                         "*",
                         style = TextStyle(
@@ -269,6 +292,17 @@ fun VTextFiled(action: ImeAction = ImeAction.Next) {
         ),
         singleLine = true,
         cursorBrush = SolidColor(orange),
+        keyboardOptions = KeyboardOptions(
+            keyboardType = KeyboardType.NumberPassword,
+            imeAction = action
+        ),
+        keyboardActions = KeyboardActions(
+            onNext = { focusManager.moveFocus(FocusDirection.Right) },
+            onDone = {
+                keyboardController?.hide()
+                focusManager.clearFocus()
+            }
+        ),
     )
 }
 
@@ -289,3 +323,14 @@ fun VerifyTextField() {
         Spacer(modifier = Modifier.width(28.dp))
     }
 }
+/*
+            if (it.text.length <= 1) {
+                value = it
+                if (action == ImeAction.Next)
+                    focusManager.moveFocus(FocusDirection.Right)
+                else {
+                    keyboardController?.hide()
+                    focusManager.clearFocus()
+                }
+            }
+ */
