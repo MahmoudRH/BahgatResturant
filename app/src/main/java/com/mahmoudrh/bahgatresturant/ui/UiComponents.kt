@@ -173,9 +173,9 @@ fun AppTextField(
 }
 
 @Composable
-fun Footer(modifier: Modifier = Modifier, text: String, textButton: String, onClick: () -> Unit) {
+fun Footer(text: String, textButton: String, onClick: () -> Unit) {
     Row(
-        modifier
+        Modifier
             .fillMaxWidth()
             .padding(bottom = 15.dp),
         horizontalArrangement = Arrangement.Center,

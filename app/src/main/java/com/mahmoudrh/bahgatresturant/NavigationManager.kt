@@ -12,7 +12,16 @@ import com.mahmoudrh.bahgatresturant.ui.*
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun MyNavHost(navHostController: NavHostController) {
-    AnimatedNavHost(navController = navHostController, startDestination = "WelcomeScreen") {
+    AnimatedNavHost(navController = navHostController, startDestination = "SplashScreen") {
+        composable("SplashScreen") {
+            AnimatedSplashScreen(
+                navigateToWelcome = {
+                    navHostController.popBackStack()
+                    navHostController.navigate("WelcomeScreen")
+                }
+            )
+        }
+
         composable(route = "WelcomeScreen",
             popEnterTransition = {
                 slideInHorizontally(animationSpec = tween(300), initialOffsetX = { -300 }) + fadeIn(
