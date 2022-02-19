@@ -282,7 +282,7 @@ fun VTextFiled(action: ImeAction = ImeAction.Next) {
                         ),
                     )
                 }
-                innerTextField()  //<-- Add this
+                innerTextField()
             }
         },
         textStyle = TextStyle(
@@ -323,14 +323,3 @@ fun VerifyTextField() {
         Spacer(modifier = Modifier.width(28.dp))
     }
 }
-/*
-            if (it.text.length <= 1) {
-                value = it
-                if (action == ImeAction.Next)
-                    focusManager.moveFocus(FocusDirection.Right)
-                else {
-                    keyboardController?.hide()
-                    focusManager.clearFocus()
-                }
-            }
- */
