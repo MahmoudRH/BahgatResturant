@@ -1,9 +1,5 @@
 package com.mahmoudrh.bahgatresturant.ui
 
-import android.content.Intent
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -22,8 +18,8 @@ import androidx.compose.ui.unit.sp
 import com.mahmoudrh.bahgatresturant.R
 import com.mahmoudrh.bahgatresturant.ui.ui.theme.*
 
-@Composable
 @OptIn(ExperimentalComposeUiApi::class)
+@Composable
 fun SignInScreen(navigateToResetPasswordScreen:()->Unit, navigateToSignUpScreen:()->Unit) {
     BahgatResturantTheme {
         Box(Modifier.fillMaxSize()) {

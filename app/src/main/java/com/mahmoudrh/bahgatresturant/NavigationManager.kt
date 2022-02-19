@@ -4,9 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
-import com.mahmoudrh.bahgatresturant.ui.SignInScreen
-import com.mahmoudrh.bahgatresturant.ui.WelcomeScreen
+import com.mahmoudrh.bahgatresturant.ui.*
+
 
 @Composable
 fun MyNavHost(navHostController: NavHostController) {
@@ -22,11 +21,38 @@ fun MyNavHost(navHostController: NavHostController) {
 
         composable("SignInScreen") {
             SignInScreen(navigateToResetPasswordScreen = {
+                navHostController.navigate("ResetPasswordScreen")
 
             }, navigateToSignUpScreen = {
+                navHostController.navigate("SignUpScreen"){
+                    popUpTo("WelcomeScreen")
+                }
 
             })
         }
 
+        composable("SignUpScreen"){
+            SignUpScreen {
+             navHostController.navigate("SignInScreen"){
+                 popUpTo("WelcomeScreen")
+             }
+            }
+        }
+
+        composable("ResetPasswordScreen"){
+            ResetPasswordScreen {
+                navHostController.navigate("EmailVerificationScreen")
+            }
+        }
+
+        composable("EmailVerificationScreen"){
+            EmailVerificationScreen {
+                navHostController.navigate("ChangePasswordScreen")
+            }
+        }
+
+        composable("ChangePasswordScreen"){
+            ChangePasswordScreen()
+        }
     }
 }

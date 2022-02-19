@@ -20,26 +20,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ui.ChangePasswordActivity"
-            android:exported="false"
-            android:label="@string/title_activity_change_password"
-            android:theme="@style/Theme.BahgatResturant" />
-        <activity
-            android:name=".ui.EmailVerificationActivity"
-            android:exported="false"
-            android:label="@string/title_activity_email_verification"
-            android:theme="@style/Theme.BahgatResturant" />
-        <activity
-            android:name=".ui.ResetPasswordActivity"
-            android:exported="false"
-            android:label="@string/title_activity_reset_password"
-            android:theme="@style/Theme.BahgatResturant" />
-        <activity
-            android:name=".ui.SignUpActivity"
-            android:exported="false"
-            android:label="@string/title_activity_sign_up"
-            android:theme="@style/Theme.BahgatResturant" />
     </application>
 
 </manifest>
