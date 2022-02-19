@@ -59,7 +59,7 @@ class SignUpActivity : ComponentActivity() {
                         FilledButton(text = "Sign Up", modifier = Modifier.padding(horizontal = 34.dp)) {}
                     }
                     Footer(text = "Already have an Account?", textButton = "Login", modifier = Modifier.align(Alignment.BottomCenter)){
-                        startActivity(Intent(this@SignUpActivity, SignInActivity::class.java))
+//                        startActivity(Intent(this@SignUpActivity, SignInActivity::class.java))
                     }
                 }
 
