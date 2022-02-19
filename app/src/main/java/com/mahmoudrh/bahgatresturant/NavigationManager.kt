@@ -14,7 +14,7 @@ import com.mahmoudrh.bahgatresturant.ui.*
 fun MyNavHost(navHostController: NavHostController) {
     AnimatedNavHost(navController = navHostController, startDestination = "SplashScreen") {
         composable("SplashScreen") {
-            AnimatedSplashScreen(
+            SplashScreen(
                 navigateToWelcome = {
                     navHostController.popBackStack()
                     navHostController.navigate("WelcomeScreen")

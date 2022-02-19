@@ -25,29 +25,15 @@ import com.mahmoudrh.bahgatresturant.ui.ui.theme.*
 import kotlinx.coroutines.delay
 
 @Composable
-fun AnimatedSplashScreen(navigateToWelcome: () -> Unit) {
-    var startAnimation by remember { mutableStateOf(false) }
-    val alphaAnim = animateFloatAsState(
-        targetValue = if (startAnimation) 1f else 0f,
-        animationSpec = tween(
-            durationMillis = 3000
-        )
-    )
-
+fun SplashScreen(navigateToWelcome: () -> Unit) {
     LaunchedEffect(key1 = true) {
-        startAnimation = true
         delay(3000)
         navigateToWelcome()
     }
-    SplashScreen(alpha = alphaAnim.value)
-}
-
-@Composable
-fun SplashScreen(alpha: Float) {
     BahgatResturantTheme {
         Box() {
             Image(
-                painter = painterResource(id = R.drawable.splash_background),
+                painter = painterResource(id = R.drawable.ic_splash_background),
                 contentDescription = null,
                 Modifier.fillMaxSize()
             )
