@@ -15,7 +15,16 @@ fun MyNavHost(navHostController: NavHostController) {
     AnimatedNavHost(navController = navHostController, startDestination = "SplashScreen") {
         composable("SplashScreen") {
             SplashScreen(
-                navigateToWelcome = {
+                navigateToPageView = {
+                    navHostController.popBackStack()
+                    navHostController.navigate("PageViewScreen")
+                }
+            )
+        }
+
+        composable("PageViewScreen") {
+            PageViewScreen(
+                navigateToWelcomeScreen = {
                     navHostController.popBackStack()
                     navHostController.navigate("WelcomeScreen")
                 }
