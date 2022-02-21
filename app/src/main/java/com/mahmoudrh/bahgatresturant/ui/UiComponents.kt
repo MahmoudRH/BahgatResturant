@@ -1,9 +1,11 @@
 package com.mahmoudrh.bahgatresturant.ui.ui.theme
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.relocation.BringIntoViewRequester
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
@@ -14,6 +16,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusDirection
+import androidx.compose.ui.focus.onFocusEvent
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.input.key.Key
@@ -31,6 +34,7 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mahmoudrh.bahgatresturant.R
+import kotlinx.coroutines.launch
 
 @Composable
 fun Logo(modifier: Modifier) {
@@ -91,20 +95,20 @@ fun FilledButton(modifier: Modifier = Modifier, text: String, onClick: () -> Uni
 }
 
 @Composable
-fun BorderButton(modifier: Modifier, text: String, onClick: () -> Unit) {
+fun BorderButton(modifier: Modifier, text: String, color: Color = orange, onClick: () -> Unit) {
     OutlinedButton(
         modifier = modifier
             .height(56.dp)
             .fillMaxWidth(),
         onClick = onClick,
         shape = RoundedCornerShape(28.dp),
-        border = BorderStroke(width = 1.dp, color = orange),
+        border = BorderStroke(width = 1.dp, color = color),
         elevation = null
     ) {
         Text(
             text = text,
             style = TextStyle(
-                color = orange,
+                color = color,
                 fontSize = 16.sp,
                 fontFamily = metropolisFontFamily,
                 fontWeight = FontWeight.SemiBold
@@ -113,6 +117,7 @@ fun BorderButton(modifier: Modifier, text: String, onClick: () -> Unit) {
     }
 }
 
+@OptIn(ExperimentalFoundationApi::class)
 @ExperimentalComposeUiApi
 @Composable
 fun AppTextField(
@@ -126,12 +131,20 @@ fun AppTextField(
     var textFieldState by remember {
         mutableStateOf("")
     }
+    val bringIntoViewRequester = remember { BringIntoViewRequester() }
+    val coroutineScope = rememberCoroutineScope()
     val keyboardController = LocalSoftwareKeyboardController.current
     val focusManager = LocalFocusManager.current
     TextField(
         modifier = modifier
             .fillMaxWidth()
-            .padding(horizontal = 30.dp),
+            .padding(horizontal = 30.dp).onFocusEvent { focusState ->
+                if (focusState.isFocused) {
+                    coroutineScope.launch {
+                        bringIntoViewRequester.bringIntoView()
+                    }
+                }
+            },
         value = textFieldState,
         colors = TextFieldDefaults.textFieldColors(
             backgroundColor = gray,

@@ -54,8 +54,7 @@ fun WelcomeScreen(navigateToSignIn:()-> Unit , navigateToSignUp:()-> Unit) {
             }
             BorderButton(
                 modifier = Modifier
-                    .padding(horizontal = 34.dp)
-                    .padding(top = 24.dp),
+                    .padding(horizontal = 34.dp, vertical = 24.dp),
                 text = "Create an Account",
             ) {
                 navigateToSignUp()

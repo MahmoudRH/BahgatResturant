@@ -1,6 +1,7 @@
 package com.mahmoudrh.bahgatresturant.ui
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.relocation.BringIntoViewRequester
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
@@ -46,6 +47,7 @@ fun SignUpScreen(navigateToSignInScreen: () -> Unit) {
                     color = secondaryFontColor,
                 )
             )
+
             Spacer(modifier = Modifier.height(36.dp))
             AppTextField(hint = "Name")
             Spacer(modifier = Modifier.height(28.dp))

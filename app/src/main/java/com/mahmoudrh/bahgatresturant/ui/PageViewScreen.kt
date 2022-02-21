@@ -1,13 +1,16 @@
 package com.mahmoudrh.bahgatresturant.ui
 
-import androidx.annotation.RestrictTo
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
@@ -37,7 +40,9 @@ fun PageViewScreen(navigateToWelcomeScreen: () -> Unit){
                 verticalArrangement = Arrangement.Center
             ) {
                 Image(painter = painterResource(id = list[index].image), contentDescription = null)
-                Spacer(modifier = Modifier.height(70.dp))
+                Spacer(modifier = Modifier.height(30.dp))
+                Indicator(count = list.size, index = index)
+                Spacer(modifier = Modifier.height(35.dp))
                 Text(
                     text = list[index].title,
                     style = TextStyle(
@@ -58,7 +63,7 @@ fun PageViewScreen(navigateToWelcomeScreen: () -> Unit){
                     modifier = Modifier.padding(horizontal = 45.dp)
                 )
                 Spacer(modifier = Modifier.height(40.dp))
-                FilledButton(text = "Next", modifier = Modifier.padding(horizontal = 34.dp)) {
+                FilledButton(modifier = Modifier.padding(horizontal = 34.dp), text = "Next") {
                     scope.launch {
                         if (index < list.size - 1) {
                             pagerState.animateScrollToPage(index + 1)
@@ -67,7 +72,33 @@ fun PageViewScreen(navigateToWelcomeScreen: () -> Unit){
                         }
                     }
                 }
+                Spacer(modifier = Modifier.height(20.dp))
+
+                BorderButton(modifier = Modifier.padding(horizontal = 34.dp), text = "Skip", color = secondaryFontColor) {
+                    navigateToWelcomeScreen()
+                }
+                Spacer(modifier = Modifier.height(20.dp))
             }
+        }
+    }
+}
+@Composable
+fun Indicator(count: Int, index: Int) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(10.dp),
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        for (i in 0 until count) {
+            Box(
+                modifier = Modifier
+                    .size(8.dp)
+                    .clip(CircleShape)
+                    .background(if (i == index) orange else Color.LightGray)
+            )
+            Spacer(modifier = Modifier.size(5.dp))
         }
     }
 }
