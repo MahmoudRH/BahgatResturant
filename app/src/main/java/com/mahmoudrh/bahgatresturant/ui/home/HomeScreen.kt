@@ -1,4 +1,4 @@
-package com.mahmoudrh.bahgatresturant.ui
+package com.mahmoudrh.bahgatresturant.ui.home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -6,12 +6,10 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -20,9 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -42,7 +38,6 @@ val testList = listOf(
     MealKind("Italian", R.drawable.italian),
     MealKind("Indian", R.drawable.indian)
 )
-
 val testList2 = listOf(
     PopularRestaurant(
         name = "Minute by tuk tuk",
@@ -66,7 +61,6 @@ val testList2 = listOf(
         coverImage = R.drawable.restaurent_c
     ),
 )
-
 val testList3 = listOf(
     PopularRestaurant(
         name = "Café De Bambaa",
@@ -82,8 +76,6 @@ val testList3 = listOf(
         coverImage = R.drawable.restaurant_y
     ),
 )
-
-
 val testList4 = listOf(
     PopularRestaurant(
         name = "Mulberry Pizza by Josh",
@@ -115,6 +107,7 @@ fun HomeScreen() {
         modifier = Modifier
             .fillMaxSize()
     ) {
+
         //--> Top Section
         item {
             TopBar("Mahmoud")
@@ -148,96 +141,158 @@ fun HomeScreen() {
         items(testList4) { item ->
             RecentItem(item)
         }
+    }
+}
+
+@Composable
+fun TopBar(userName: String) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(20.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
+        Text(
+            text = "Hello $userName!",
+            style = TextStyle(
+                color = primaryFontColor,
+                fontSize = 20.sp,
+                fontFamily = metropolisFontFamily,
+                fontWeight = FontWeight.SemiBold
+            )
+        )
+        Icon(
+            painter = painterResource(id = R.drawable.ic_cart),
+            contentDescription = null,
+            tint = primaryFontColor
+        )
+    }
+}
+
+@OptIn(ExperimentalComposeUiApi::class)
+@Composable
+fun SearchField() {
+    var value by remember { mutableStateOf("") }
+    val keyboardController = LocalSoftwareKeyboardController.current
+    TextField(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 17.dp),
+        value = value,
+        colors = TextFieldDefaults.textFieldColors(
+            backgroundColor = gray,
+            cursorColor = orange,
+            disabledLabelColor = gray,
+            focusedIndicatorColor = Color.Transparent,
+            unfocusedIndicatorColor = Color.Transparent
+        ),
+        onValueChange = {
+            value = it
+        },
+        placeholder = {
+            Text(
+                text = "Search food",
+                style = TextStyle(
+                    color = placeholderColor,
+                    fontSize = 14.sp,
+                    fontFamily = metropolisFontFamily
+                )
+            )
+        },
+        shape = RoundedCornerShape(28.dp),
+        keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
+        keyboardActions = KeyboardActions(
+            onSearch = {
+                /** do something*/
+                keyboardController?.hide()
+            }
+        ),
+        singleLine = true,
+        textStyle = TextStyle(
+            color = primaryFontColor,
+            fontSize = 15.sp,
+            fontFamily = metropolisFontFamily
+        ),
+        leadingIcon = {
+            Icon(
+                painter = painterResource(id = R.drawable.ic_search),
+                contentDescription = "search icon",
+                modifier = Modifier.padding(start = 14.dp)
+            )
+        }
+    )
+}
+
+@Composable
+fun MealKinds(list: List<MealKind>) {
+    LazyRow(modifier = Modifier.fillMaxWidth()) {
+        item { Spacer(modifier = Modifier.size(12.dp)) }
+        items(list) { item ->
+            MealKind(item)
+        }
+        item { Spacer(modifier = Modifier.size(12.dp)) }
 
     }
 }
 
 @Composable
-fun RecentItem(item: PopularRestaurant) {
-    val itemRate = item.rate.toString().substring(0, 3)
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 20.dp)
-            .padding(bottom = 20.dp)
-    ) {
+fun MealKind(item: MealKind) {
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Image(
             modifier = Modifier
                 .width(110.dp)
-                .padding(end = 20.dp)
                 .aspectRatio(1f)
+                .padding(8.dp)
                 .clip(RoundedCornerShape(10.dp)),
-            painter = painterResource(id = item.coverImage),
+            painter = painterResource(id = item.image),
             contentDescription = item.name,
             contentScale = ContentScale.Crop
         )
-        Column(
-            modifier = Modifier
-                .fillMaxWidth(), horizontalAlignment = Alignment.Start
-        ) {
+        Text(
+            text = item.name,
+            style = TextStyle(
+                color = primaryFontColor,
+                fontSize = 14.sp,
+                fontFamily = metropolisFontFamily,
+                fontWeight = FontWeight.Bold,
+                textAlign = TextAlign.Center
+            )
+        )
+    }
+}
+
+@Composable
+fun SectionHeader(sectionName: String, viewAll: () -> Unit) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 20.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(
+            text = sectionName,
+            style = TextStyle(
+                color = primaryFontColor,
+                fontSize = 20.sp,
+                fontFamily = metropolisFontFamily,
+                fontWeight = FontWeight.Medium
+            )
+        )
+        TextButton(onClick = viewAll) {
             Text(
-                modifier = Modifier.padding(top = 4.dp),
-                text = item.name,
+                "View all",
                 style = TextStyle(
-                    color = primaryFontColor,
-                    fontSize = 16.sp,
+                    fontSize = 14.sp,
+                    color = orange,
                     fontFamily = metropolisFontFamily,
                     fontWeight = FontWeight.SemiBold
                 )
             )
-            Spacer(modifier = Modifier.size(4.dp))
-            Text(
-                text = "${item.foodKind} ",
-                style = TextStyle(
-                    color = secondaryFontColor,
-                    fontSize = 13.sp,
-                    fontFamily = metropolisFontFamily
-                )
-            )
-            Spacer(modifier = Modifier.size(4.dp))
-            Row {
-                Icon(
-                    painterResource(id = R.drawable.ic_star),
-                    contentDescription = "rating",
-                    tint = orange
-                )
-                Text(
-                    text = " $itemRate ",
-                    style = TextStyle(
-                        color = orange,
-                        fontSize = 13.sp,
-                        fontFamily = metropolisFontFamily
-                    )
-                )
-                Text(
-                    text = " (${item.rateCount} ratings)  ",
-                    style = TextStyle(
-                        color = secondaryFontColor,
-                        fontSize = 13.sp,
-                        fontFamily = metropolisFontFamily
-                    )
-                )
-            }
         }
     }
 }
-
-
-/*@Composable
-fun PopularRestaurants(list: List<PopularRestaurant>) {
-    Column(modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-        SectionHeader(sectionName = "Popular Restaurants") {}
-        Spacer(modifier = Modifier.size(10.dp))
-        LazyColumn(
-            modifier = Modifier.fillMaxWidth(),
-            contentPadding = PaddingValues(bottom = 25.dp)
-        ) {
-            items(list) { item ->
-                PopularRestaurantItem(item)
-            }
-        }
-    }
-}*/
 
 @Composable
 fun PopularRestaurantItem(item: PopularRestaurant) {
@@ -309,6 +364,18 @@ fun PopularRestaurantItem(item: PopularRestaurant) {
                 )
             )
         }
+
+    }
+}
+
+@Composable
+fun MostPopular(list: List<PopularRestaurant>) {
+    LazyRow(modifier = Modifier.fillMaxWidth()) {
+        item { Spacer(modifier = Modifier.size(12.dp)) }
+        items(list) { item ->
+            MostPopularItem(item, modifier = Modifier.fillParentMaxWidth(0.8f))
+        }
+        item { Spacer(modifier = Modifier.size(12.dp)) }
 
     }
 }
@@ -387,171 +454,87 @@ fun MostPopularItem(item: PopularRestaurant, modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun MostPopular(list: List<PopularRestaurant>) {
-    LazyRow(modifier = Modifier.fillMaxWidth()) {
-        item { Spacer(modifier = Modifier.size(12.dp)) }
-        items(list) { item ->
-            MostPopularItem(item, modifier = Modifier.fillParentMaxWidth(0.8f))
-        }
-        item { Spacer(modifier = Modifier.size(12.dp)) }
-
-    }
-}
-
-
-@Composable
-fun SectionHeader(sectionName: String, viewAll: () -> Unit) {
+fun RecentItem(item: PopularRestaurant) {
+    val itemRate = item.rate.toString().substring(0, 3)
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 20.dp),
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically
+            .padding(horizontal = 20.dp)
+            .padding(bottom = 20.dp)
     ) {
-        Text(
-            text = sectionName,
-            style = TextStyle(
-                color = primaryFontColor,
-                fontSize = 20.sp,
-                fontFamily = metropolisFontFamily,
-                fontWeight = FontWeight.Medium
-            )
+        Image(
+            modifier = Modifier
+                .width(110.dp)
+                .padding(end = 20.dp)
+                .aspectRatio(1f)
+                .clip(RoundedCornerShape(10.dp)),
+            painter = painterResource(id = item.coverImage),
+            contentDescription = item.name,
+            contentScale = ContentScale.Crop
         )
-        TextButton(onClick = viewAll) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth(), horizontalAlignment = Alignment.Start
+        ) {
             Text(
-                "View all",
+                modifier = Modifier.padding(top = 4.dp),
+                text = item.name,
                 style = TextStyle(
-                    fontSize = 14.sp,
-                    color = orange,
+                    color = primaryFontColor,
+                    fontSize = 16.sp,
                     fontFamily = metropolisFontFamily,
                     fontWeight = FontWeight.SemiBold
                 )
             )
-        }
-    }
-}
-
-@Composable
-fun MealKinds(list: List<MealKind>) {
-    LazyRow(modifier = Modifier.fillMaxWidth()) {
-        item { Spacer(modifier = Modifier.size(12.dp)) }
-        items(list) { item ->
-            MealKind(item)
-        }
-        item { Spacer(modifier = Modifier.size(12.dp)) }
-
-    }
-}
-
-@Composable
-fun MealKind(item: MealKind) {
-    Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        Image(
-            modifier = Modifier
-                .width(110.dp)
-                .aspectRatio(1f)
-                .padding(8.dp)
-                .clip(RoundedCornerShape(10.dp)),
-            painter = painterResource(id = item.image),
-            contentDescription = item.name,
-            contentScale = ContentScale.Crop
-        )
-        Text(
-            text = item.name,
-            style = TextStyle(
-                color = primaryFontColor,
-                fontSize = 14.sp,
-                fontFamily = metropolisFontFamily,
-                fontWeight = FontWeight.Bold,
-                textAlign = TextAlign.Center
-            )
-        )
-    }
-}
-
-@OptIn(ExperimentalComposeUiApi::class)
-@Composable
-fun SearchField() {
-    var value by remember { mutableStateOf("") }
-    val keyboardController = LocalSoftwareKeyboardController.current
-    TextField(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 17.dp),
-        value = value,
-        colors = TextFieldDefaults.textFieldColors(
-            backgroundColor = gray,
-            cursorColor = orange,
-            disabledLabelColor = gray,
-            focusedIndicatorColor = Color.Transparent,
-            unfocusedIndicatorColor = Color.Transparent
-        ),
-        onValueChange = {
-            value = it
-        },
-        placeholder = {
+            Spacer(modifier = Modifier.size(4.dp))
             Text(
-                text = "Search food",
+                text = "${item.foodKind} ",
                 style = TextStyle(
-                    color = placeholderColor,
-                    fontSize = 14.sp,
+                    color = secondaryFontColor,
+                    fontSize = 13.sp,
                     fontFamily = metropolisFontFamily
                 )
             )
-        },
-        shape = RoundedCornerShape(28.dp),
-        keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
-        keyboardActions = KeyboardActions(
-            onSearch = {
-                /** do something*/
-                keyboardController?.hide()
+            Spacer(modifier = Modifier.size(4.dp))
+            Row {
+                Icon(
+                    painterResource(id = R.drawable.ic_star),
+                    contentDescription = "rating",
+                    tint = orange
+                )
+                Text(
+                    text = " $itemRate ",
+                    style = TextStyle(
+                        color = orange,
+                        fontSize = 13.sp,
+                        fontFamily = metropolisFontFamily
+                    )
+                )
+                Text(
+                    text = " (${item.rateCount} ratings)  ",
+                    style = TextStyle(
+                        color = secondaryFontColor,
+                        fontSize = 13.sp,
+                        fontFamily = metropolisFontFamily
+                    )
+                )
             }
-        ),
-        singleLine = true,
-        textStyle = TextStyle(
-            color = primaryFontColor,
-            fontSize = 15.sp,
-            fontFamily = metropolisFontFamily
-        ),
-        leadingIcon = {
-            Icon(
-                painter = painterResource(id = R.drawable.ic_search),
-                contentDescription = "search icon",
-                modifier = Modifier.padding(start = 14.dp)
-            )
         }
-    )
-}
-
-@Composable
-fun TopBar(userName: String) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(20.dp),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceBetween
-    ) {
-        Text(
-            text = "Hello $userName!",
-            style = TextStyle(
-                color = primaryFontColor,
-                fontSize = 20.sp,
-                fontFamily = metropolisFontFamily,
-                fontWeight = FontWeight.SemiBold
-            )
-        )
-        Icon(
-            painter = painterResource(id = R.drawable.ic_cart),
-            contentDescription = null,
-            tint = primaryFontColor
-        )
     }
 }
 
-
-@Preview
-@Composable
-fun Preview() {
-    HomeScreen()
-}
+/*@Composable
+fun PopularRestaurants(list: List<PopularRestaurant>) {
+    Column(modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
+        SectionHeader(sectionName = "Popular Restaurants") {}
+        Spacer(modifier = Modifier.size(10.dp))
+        LazyColumn(
+            modifier = Modifier.fillMaxWidth(),
+            contentPadding = PaddingValues(bottom = 25.dp)
+        ) {
+            items(list) { item ->
+                PopularRestaurantItem(item)
+            }
+        }
+    }
+}*/

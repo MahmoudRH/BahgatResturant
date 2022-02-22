@@ -1,4 +1,4 @@
-package com.mahmoudrh.bahgatresturant.ui
+package com.mahmoudrh.bahgatresturant.ui.authentication
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -20,7 +20,11 @@ import com.mahmoudrh.bahgatresturant.ui.ui.theme.*
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
-fun SignInScreen(navigateToResetPasswordScreen: () -> Unit, navigateToSignUpScreen: () -> Unit) {
+fun SignInScreen(
+    navigateToResetPasswordScreen: () -> Unit,
+    navigateToSignUpScreen: () -> Unit,
+    navigateToHomeScreen: () -> Unit
+) {
     BahgatResturantTheme {
         Column(
             modifier = Modifier
@@ -61,7 +65,11 @@ fun SignInScreen(navigateToResetPasswordScreen: () -> Unit, navigateToSignUpScre
             FilledButton(
                 text = "Sign In",
                 modifier = Modifier.padding(horizontal = 34.dp)
-            ) {}
+            ) {
+
+                //temporary
+                navigateToHomeScreen()
+            }
             Spacer(modifier = Modifier.height(24.dp))
             TextButton(onClick = {
                 navigateToResetPasswordScreen()

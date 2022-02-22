@@ -1,4 +1,4 @@
-package com.mahmoudrh.bahgatresturant.ui
+package com.mahmoudrh.bahgatresturant.ui.weclome
 
 import android.content.Intent
 import android.os.Bundle

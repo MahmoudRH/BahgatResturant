@@ -6,13 +6,15 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.composable
-import com.mahmoudrh.bahgatresturant.ui.*
+import com.mahmoudrh.bahgatresturant.ui.weclome.*
+import com.mahmoudrh.bahgatresturant.ui.authentication.*
+import com.mahmoudrh.bahgatresturant.ui.home.*
 
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun MyNavHost(navHostController: NavHostController) {
-    AnimatedNavHost(navController = navHostController, startDestination = "HomeScreen") {
+    AnimatedNavHost(navController = navHostController, startDestination = "SplashScreen") {
         composable("SplashScreen", exitTransition = { fadeOut(tween(400)) + slideOutVertically(tween(400), targetOffsetY = {-400})  }) {
             SplashScreen(
                 navigateToPageView = {
@@ -97,7 +99,8 @@ fun MyNavHost(navHostController: NavHostController) {
                 navHostController.navigate("SignUpScreen") {
                     popUpTo("WelcomeScreen")
                 }
-
+            }, navigateToHomeScreen = {
+                navHostController.navigate("HomeScreen")
             })
         }
 

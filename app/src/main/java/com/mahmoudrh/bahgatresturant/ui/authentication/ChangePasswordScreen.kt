@@ -1,4 +1,5 @@
-package com.mahmoudrh.bahgatresturant.ui
+package com.mahmoudrh.bahgatresturant.ui.authentication
+
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
@@ -14,10 +15,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mahmoudrh.bahgatresturant.ui.ui.theme.*
 
-
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
-fun ResetPasswordScreen(navigateToEmailVerificationScreen:()->Unit) {
+fun ChangePasswordScreen() {
     BahgatResturantTheme {
         Column(
             modifier = Modifier.fillMaxWidth(),
@@ -25,7 +25,7 @@ fun ResetPasswordScreen(navigateToEmailVerificationScreen:()->Unit) {
         ) {
             Spacer(modifier = Modifier.height(60.dp))
             Text(
-                text = "Reset Password",
+                text = "New Password",
                 style = TextStyle(
                     fontSize = 30.sp,
                     fontFamily = metropolisFontFamily,
@@ -34,26 +34,26 @@ fun ResetPasswordScreen(navigateToEmailVerificationScreen:()->Unit) {
             )
             Spacer(modifier = Modifier.height(12.dp))
             Text(
-                text = "Please enter your email to receive a link to  create a new password via email",
+                modifier = Modifier.padding(horizontal = 60.dp),
+                text = "Please enter your email to receive a" +
+                        "link to  create a new password via email",
                 style = TextStyle(
                     fontSize = 14.sp,
                     color = secondaryFontColor,
                     fontFamily = metropolisFontFamily,
                     textAlign = TextAlign.Center
-                ),
-                modifier = Modifier.padding(horizontal = 60.dp)
+                )
             )
-            Spacer(modifier = Modifier.height(60.dp))
+            Spacer(modifier = Modifier.height(36.dp))
+            AppTextField(hint = "New Password", keyboardType = KeyboardType.Password)
+            Spacer(modifier = Modifier.height(28.dp))
             AppTextField(
-                hint = "Your Email",
-                action = ImeAction.Done,
-                keyboardType = KeyboardType.Email
+                hint = "Confirm Password",
+                keyboardType = KeyboardType.Password,
+                action = ImeAction.Done
             )
-            Spacer(modifier = Modifier.height(34.dp))
-            FilledButton(text = "Send", modifier = Modifier.padding(horizontal = 34.dp)) {
-
-                navigateToEmailVerificationScreen()
-            }
+            Spacer(modifier = Modifier.height(28.dp))
+            FilledButton(text = "Next", modifier = Modifier.padding(horizontal = 34.dp)) {}
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.mahmoudrh.bahgatresturant.ui
+package com.mahmoudrh.bahgatresturant.ui.weclome
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

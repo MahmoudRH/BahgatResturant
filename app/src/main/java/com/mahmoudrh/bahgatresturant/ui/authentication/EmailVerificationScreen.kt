@@ -1,23 +1,18 @@
-package com.mahmoudrh.bahgatresturant.ui
-
+package com.mahmoudrh.bahgatresturant.ui.authentication
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.input.ImeAction
-import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mahmoudrh.bahgatresturant.ui.ui.theme.*
 
-@OptIn(ExperimentalComposeUiApi::class)
 @Composable
-fun ChangePasswordScreen() {
+fun EmailVerificationScreen(navigateToChangePasswordScreen: () -> Unit) {
     BahgatResturantTheme {
         Column(
             modifier = Modifier.fillMaxWidth(),
@@ -25,35 +20,34 @@ fun ChangePasswordScreen() {
         ) {
             Spacer(modifier = Modifier.height(60.dp))
             Text(
-                text = "New Password",
+                modifier = Modifier.padding(horizontal = 50.dp),
+                text = "We have sent an OTP to your Mobile",
                 style = TextStyle(
-                    fontSize = 30.sp,
+                    fontSize = 25.sp,
                     fontFamily = metropolisFontFamily,
-                    color = primaryFontColor
+                    color = primaryFontColor,
+                    textAlign = TextAlign.Center
                 )
             )
             Spacer(modifier = Modifier.height(12.dp))
             Text(
-                modifier = Modifier.padding(horizontal = 60.dp),
-                text = "Please enter your email to receive a" +
-                        "link to  create a new password via email",
+                text = "Please check your mobile number 071*****12 continue to reset your password",
                 style = TextStyle(
                     fontSize = 14.sp,
                     color = secondaryFontColor,
                     fontFamily = metropolisFontFamily,
                     textAlign = TextAlign.Center
-                )
+                ),
+                modifier = Modifier.padding(horizontal = 50.dp)
             )
+            Spacer(modifier = Modifier.height(54.dp))
+            VerifyTextField()
             Spacer(modifier = Modifier.height(36.dp))
-            AppTextField(hint = "New Password", keyboardType = KeyboardType.Password)
-            Spacer(modifier = Modifier.height(28.dp))
-            AppTextField(
-                hint = "Confirm Password",
-                keyboardType = KeyboardType.Password,
-                action = ImeAction.Done
-            )
-            Spacer(modifier = Modifier.height(28.dp))
-            FilledButton(text = "Next", modifier = Modifier.padding(horizontal = 34.dp)) {}
+            FilledButton(text = "Next", modifier = Modifier.padding(horizontal = 34.dp)) {
+                navigateToChangePasswordScreen()
+            }
+            Spacer(modifier = Modifier.height(32.dp))
+            Footer(text = "Didn't Receive?", textButton = "Click Here") {}
         }
     }
 }
