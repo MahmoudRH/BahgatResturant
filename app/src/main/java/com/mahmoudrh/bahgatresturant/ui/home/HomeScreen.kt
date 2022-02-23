@@ -170,60 +170,6 @@ fun TopBar(userName: String) {
     }
 }
 
-@OptIn(ExperimentalComposeUiApi::class)
-@Composable
-fun SearchField() {
-    var value by remember { mutableStateOf("") }
-    val keyboardController = LocalSoftwareKeyboardController.current
-    TextField(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 17.dp),
-        value = value,
-        colors = TextFieldDefaults.textFieldColors(
-            backgroundColor = gray,
-            cursorColor = orange,
-            disabledLabelColor = gray,
-            focusedIndicatorColor = Color.Transparent,
-            unfocusedIndicatorColor = Color.Transparent
-        ),
-        onValueChange = {
-            value = it
-        },
-        placeholder = {
-            Text(
-                text = "Search food",
-                style = TextStyle(
-                    color = placeholderColor,
-                    fontSize = 14.sp,
-                    fontFamily = metropolisFontFamily
-                )
-            )
-        },
-        shape = RoundedCornerShape(28.dp),
-        keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
-        keyboardActions = KeyboardActions(
-            onSearch = {
-                /** do something*/
-                keyboardController?.hide()
-            }
-        ),
-        singleLine = true,
-        textStyle = TextStyle(
-            color = primaryFontColor,
-            fontSize = 15.sp,
-            fontFamily = metropolisFontFamily
-        ),
-        leadingIcon = {
-            Icon(
-                painter = painterResource(id = R.drawable.ic_search),
-                contentDescription = "search icon",
-                modifier = Modifier.padding(start = 14.dp)
-            )
-        }
-    )
-}
-
 @Composable
 fun MealKinds(list: List<MealKind>) {
     LazyRow(modifier = Modifier.fillMaxWidth()) {

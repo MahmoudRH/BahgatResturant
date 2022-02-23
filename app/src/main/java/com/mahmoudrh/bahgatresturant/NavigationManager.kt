@@ -6,6 +6,9 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.composable
+import com.mahmoudrh.bahgatresturant.ui.MenuDetailsScreen
+import com.mahmoudrh.bahgatresturant.ui.MenuScreen
+import com.mahmoudrh.bahgatresturant.ui.ProductDetailsScreen
 import com.mahmoudrh.bahgatresturant.ui.weclome.*
 import com.mahmoudrh.bahgatresturant.ui.authentication.*
 import com.mahmoudrh.bahgatresturant.ui.home.*
@@ -190,6 +193,18 @@ fun MyNavHost(navHostController: NavHostController) {
 
         composable("HomeScreen"){
             HomeScreen()
+        }
+
+        composable("MenuDetailsScreen"){
+            MenuDetailsScreen()
+        }
+
+        composable("MenuScreen"){
+            MenuScreen()
+        }
+
+        composable("ProductDetailsScreen"){
+            ProductDetailsScreen()
         }
     }
 }

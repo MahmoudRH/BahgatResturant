@@ -10,4 +10,6 @@ val placeholderColor = Color(0xFFB6B7B7)
 val gray = Color(0xFFF2F2F2)
 val blue = Color(0xFF367FC0)
 val red = Color(0xFFDD4B39)
+val black = Color(0xFF000000)
+val white = Color(0xFFFFFFFF)
 

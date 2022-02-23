@@ -335,3 +335,120 @@ fun VerifyTextField() {
         Spacer(modifier = Modifier.width(28.dp))
     }
 }
+
+@OptIn(ExperimentalComposeUiApi::class)
+@Composable
+fun SearchField() {
+    var value by remember { mutableStateOf("") }
+    val keyboardController = LocalSoftwareKeyboardController.current
+    TextField(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 17.dp),
+        value = value,
+        colors = TextFieldDefaults.textFieldColors(
+            backgroundColor = gray,
+            cursorColor = orange,
+            disabledLabelColor = gray,
+            focusedIndicatorColor = Color.Transparent,
+            unfocusedIndicatorColor = Color.Transparent
+        ),
+        onValueChange = {
+            value = it
+        },
+        placeholder = {
+            Text(
+                text = "Search food",
+                style = TextStyle(
+                    color = placeholderColor,
+                    fontSize = 14.sp,
+                    fontFamily = metropolisFontFamily
+                )
+            )
+        },
+        shape = RoundedCornerShape(28.dp),
+        keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
+        keyboardActions = KeyboardActions(
+            onSearch = {
+                /** do something*/
+                /** do something*/
+
+                /** do something*/
+                /** do something*/
+                /** do something*/
+                /** do something*/
+                /** do something*/
+
+                /** do something*/
+                keyboardController?.hide()
+            }
+        ),
+        singleLine = true,
+        textStyle = TextStyle(
+            color = primaryFontColor,
+            fontSize = 15.sp,
+            fontFamily = metropolisFontFamily
+        ),
+        leadingIcon = {
+            Icon(
+                painter = painterResource(id = R.drawable.ic_search),
+                contentDescription = "search icon",
+                modifier = Modifier.padding(start = 14.dp)
+            )
+        }
+    )
+}
+
+@Composable
+fun TopBar(backIcon: Boolean = true, title: String = "", iconColor: Color = primaryFontColor) {
+    var persint = 0f
+    if(title != ""){
+        persint = 0.85f
+    }else{
+        persint = 0.9f
+    }
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 20.dp, start = 20.dp, end = 20.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        if(backIcon){
+            Icon(
+                painter = painterResource(id = R.drawable.ic_back),
+                contentDescription = null,
+                tint = iconColor
+            )
+            Spacer(modifier = Modifier.width(20.dp))
+        }
+        Text(title, style = TextStyle(fontFamily = metropolisFontFamily, color = primaryFontColor, fontSize = 24.sp))
+        Spacer(modifier = Modifier.fillMaxWidth(persint))
+        Icon(
+            painter = painterResource(id = R.drawable.ic_cart),
+            contentDescription = null,
+            tint = iconColor
+        )
+    }
+}
+
+@Composable
+fun IconButton(modifier: Modifier = Modifier, image: Int, onClick: () -> Unit) {
+    Button(
+        modifier = modifier
+            .height(50.dp)
+            .width(50.dp),
+        onClick = onClick,
+        colors = ButtonDefaults.buttonColors(backgroundColor = white),
+        shape = RoundedCornerShape(100.dp),
+        elevation = ButtonDefaults.elevation(
+            defaultElevation = 6.dp,
+            pressedElevation = 8.dp,
+        )
+    ) {
+        Icon(
+            painter = painterResource(id = image),
+            contentDescription = "",
+            tint = orange
+        )
+    }
+}
