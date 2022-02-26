@@ -72,7 +72,7 @@ fun Logo(modifier: Modifier) {
 }
 
 @Composable
-fun FilledButton(modifier: Modifier = Modifier, text: String, onClick: () -> Unit) {
+fun FilledButton(modifier: Modifier = Modifier, text: String, fontSize: Int = 16, onClick: () -> Unit) {
     Button(
         modifier = modifier
             .height(56.dp)
@@ -86,7 +86,7 @@ fun FilledButton(modifier: Modifier = Modifier, text: String, onClick: () -> Uni
             text = text,
             style = TextStyle(
                 color = Color.White,
-                fontSize = 16.sp,
+                fontSize = fontSize.sp,
                 fontFamily = metropolisFontFamily,
                 fontWeight = FontWeight.SemiBold
             )

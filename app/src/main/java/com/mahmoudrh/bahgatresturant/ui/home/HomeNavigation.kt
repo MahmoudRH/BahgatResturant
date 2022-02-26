@@ -43,10 +43,10 @@ fun HomeNavigation() {
         ) {
             when (selectedItem.value) {
                 HomeScrees.MENU -> MenuScreen()
-//                HomeScrees.OFFERS ->
+                HomeScrees.OFFERS -> OffersScreen()
                 HomeScrees.HOME -> HomeScreen()
-//                HomeScrees.PROFILE ->
-//                HomeScrees.MORE ->
+                HomeScrees.PROFILE -> ProfileScreen()
+                HomeScrees.MORE -> MoreScreen()
             }
         }
 
