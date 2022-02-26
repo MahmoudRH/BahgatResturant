@@ -9,6 +9,9 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.mahmoudrh.bahgatresturant.ui.FilledButton
+import com.mahmoudrh.bahgatresturant.ui.Footer
+import com.mahmoudrh.bahgatresturant.ui.VerifyTextField
 import com.mahmoudrh.bahgatresturant.ui.ui.theme.*
 
 @Composable

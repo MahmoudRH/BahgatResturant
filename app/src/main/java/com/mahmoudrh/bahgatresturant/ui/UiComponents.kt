@@ -1,4 +1,4 @@
-package com.mahmoudrh.bahgatresturant.ui.ui.theme
+package com.mahmoudrh.bahgatresturant.ui
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -34,6 +34,7 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mahmoudrh.bahgatresturant.R
+import com.mahmoudrh.bahgatresturant.ui.ui.theme.*
 import kotlinx.coroutines.launch
 
 @Composable
@@ -138,7 +139,8 @@ fun AppTextField(
     TextField(
         modifier = modifier
             .fillMaxWidth()
-            .padding(horizontal = 30.dp).onFocusEvent { focusState ->
+            .padding(horizontal = 30.dp)
+            .onFocusEvent { focusState ->
                 if (focusState.isFocused) {
                     coroutineScope.launch {
                         bringIntoViewRequester.bringIntoView()
@@ -318,6 +320,7 @@ fun VTextFiled(action: ImeAction = ImeAction.Next) {
         ),
     )
 }
+
 @Composable
 fun VerifyTextField() {
     Row(
@@ -402,9 +405,9 @@ fun SearchField() {
 @Composable
 fun TopBar(backIcon: Boolean = true, title: String = "", iconColor: Color = primaryFontColor) {
     var persint = 0f
-    if(title != ""){
+    if (title != "") {
         persint = 0.85f
-    }else{
+    } else {
         persint = 0.9f
     }
     Row(
@@ -413,7 +416,7 @@ fun TopBar(backIcon: Boolean = true, title: String = "", iconColor: Color = prim
             .padding(top = 20.dp, start = 20.dp, end = 20.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        if(backIcon){
+        if (backIcon) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_back),
                 contentDescription = null,
@@ -421,7 +424,14 @@ fun TopBar(backIcon: Boolean = true, title: String = "", iconColor: Color = prim
             )
             Spacer(modifier = Modifier.width(20.dp))
         }
-        Text(title, style = TextStyle(fontFamily = metropolisFontFamily, color = primaryFontColor, fontSize = 24.sp))
+        Text(
+            title,
+            style = TextStyle(
+                fontFamily = metropolisFontFamily,
+                color = primaryFontColor,
+                fontSize = 24.sp
+            )
+        )
         Spacer(modifier = Modifier.fillMaxWidth(persint))
         Icon(
             painter = painterResource(id = R.drawable.ic_cart),

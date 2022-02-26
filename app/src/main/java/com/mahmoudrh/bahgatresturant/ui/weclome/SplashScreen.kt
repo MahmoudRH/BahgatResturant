@@ -6,11 +6,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.mahmoudrh.bahgatresturant.R
+import com.mahmoudrh.bahgatresturant.ui.Logo
 import com.mahmoudrh.bahgatresturant.ui.ui.theme.*
 import kotlinx.coroutines.delay
 

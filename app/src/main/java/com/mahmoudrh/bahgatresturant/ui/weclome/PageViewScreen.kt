@@ -21,6 +21,8 @@ import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
 import com.mahmoudrh.bahgatresturant.R
 import com.mahmoudrh.bahgatresturant.model.PageItem
+import com.mahmoudrh.bahgatresturant.ui.BorderButton
+import com.mahmoudrh.bahgatresturant.ui.FilledButton
 import com.mahmoudrh.bahgatresturant.ui.ui.theme.*
 import kotlinx.coroutines.launch
 
