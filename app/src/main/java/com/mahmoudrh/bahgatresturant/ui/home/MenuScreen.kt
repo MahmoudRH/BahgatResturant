@@ -1,4 +1,4 @@
-package com.mahmoudrh.bahgatresturant.ui
+package com.mahmoudrh.bahgatresturant.ui.home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -33,8 +33,10 @@ fun MenuScreen() {
     val list = arrayOf(
         Menu(image = R.drawable.item_a, name = "Food", numOfItem = 120),
         Menu(image = R.drawable.item_b, name = "Beverages", numOfItem = 250),
+        Menu(image = R.drawable.item_b, name = "Testtt", numOfItem = 920),
         Menu(image = R.drawable.item_c, name = "Desserts", numOfItem = 520),
     )
+
     BahgatResturantTheme() {
         Column() {
             TopBar(backIcon = false, title = "Menu")

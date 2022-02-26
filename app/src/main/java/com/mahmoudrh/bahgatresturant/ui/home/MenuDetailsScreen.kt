@@ -1,4 +1,4 @@
-package com.mahmoudrh.bahgatresturant.ui
+package com.mahmoudrh.bahgatresturant.ui.home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -63,17 +63,21 @@ fun MenuDetailsScreen() {
         ),
     )
     BahgatResturantTheme() {
-        Column() {
-            TopBar(title = "Desserts")
-            Spacer(modifier = Modifier.height(20.dp))
-            SearchField()
-            Spacer(modifier = Modifier.height(20.dp))
-            LazyColumn {
-                itemsIndexed(list) { index, item ->
+        LazyColumn {
+            //-> Top Section
+            item {
+                TopBar(title = "Desserts")
+                Spacer(modifier = Modifier.height(20.dp))
+                SearchField()
+                Spacer(modifier = Modifier.height(20.dp))
+            }
+
+            //-> Deserts List
+            itemsIndexed(list) { index, item ->
                     Box(
                         Modifier
                             .fillMaxWidth()
-                            .height(190.dp)
+                            .aspectRatio(2f)
                     )
                     {
                         Image(
@@ -87,7 +91,7 @@ fun MenuDetailsScreen() {
                     }
                     // Spacer between items
                     Spacer(modifier = Modifier.height(5.dp))
-                }
+
             }
         }
     }

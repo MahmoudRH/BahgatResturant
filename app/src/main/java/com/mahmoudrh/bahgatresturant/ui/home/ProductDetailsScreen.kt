@@ -1,4 +1,4 @@
-package com.mahmoudrh.bahgatresturant.ui
+package com.mahmoudrh.bahgatresturant.ui.home
 
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*

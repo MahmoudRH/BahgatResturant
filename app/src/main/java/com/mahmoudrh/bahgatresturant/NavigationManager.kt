@@ -6,9 +6,9 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.composable
-import com.mahmoudrh.bahgatresturant.ui.MenuDetailsScreen
-import com.mahmoudrh.bahgatresturant.ui.MenuScreen
-import com.mahmoudrh.bahgatresturant.ui.ProductDetailsScreen
+import com.mahmoudrh.bahgatresturant.ui.home.MenuDetailsScreen
+import com.mahmoudrh.bahgatresturant.ui.home.MenuScreen
+import com.mahmoudrh.bahgatresturant.ui.home.ProductDetailsScreen
 import com.mahmoudrh.bahgatresturant.ui.weclome.*
 import com.mahmoudrh.bahgatresturant.ui.authentication.*
 import com.mahmoudrh.bahgatresturant.ui.home.*
@@ -17,7 +17,7 @@ import com.mahmoudrh.bahgatresturant.ui.home.*
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun MyNavHost(navHostController: NavHostController) {
-    AnimatedNavHost(navController = navHostController, startDestination = "SplashScreen") {
+    AnimatedNavHost(navController = navHostController, startDestination = "HomeNavigation") {
         composable("SplashScreen", exitTransition = { fadeOut(tween(400)) + slideOutVertically(tween(400), targetOffsetY = {-400})  }) {
             SplashScreen(
                 navigateToPageView = {
@@ -103,7 +103,7 @@ fun MyNavHost(navHostController: NavHostController) {
                     popUpTo("WelcomeScreen")
                 }
             }, navigateToHomeScreen = {
-                navHostController.navigate("HomeScreen")
+                navHostController.navigate("HomeNavigation")
             })
         }
 
@@ -191,7 +191,11 @@ fun MyNavHost(navHostController: NavHostController) {
             ChangePasswordScreen()
         }
 
-        composable("HomeScreen"){
+        composable("HomeNavigation"){
+            HomeNavigation()
+        }
+
+/*        composable("HomeScreen"){
             HomeScreen()
         }
 
@@ -201,7 +205,7 @@ fun MyNavHost(navHostController: NavHostController) {
 
         composable("MenuScreen"){
             MenuScreen()
-        }
+        }*/
 
         composable("ProductDetailsScreen"){
             ProductDetailsScreen()
