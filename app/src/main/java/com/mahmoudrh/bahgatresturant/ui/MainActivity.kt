@@ -21,8 +21,8 @@ class MainActivity : ComponentActivity() {
             BahgatResturantTheme {
             val systemUiController = rememberSystemUiController()
             systemUiController.setSystemBarsColor(color = Color.White, darkIcons = true)
-            val navController = rememberAnimatedNavController()
 
+            val navController = rememberAnimatedNavController()
                 Surface(modifier = Modifier.fillMaxSize()) {
                     MyNavHost(navHostController = navController)
                 }

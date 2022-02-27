@@ -13,21 +13,41 @@ import com.mahmoudrh.bahgatresturant.ui.weclome.*
 import com.mahmoudrh.bahgatresturant.ui.authentication.*
 import com.mahmoudrh.bahgatresturant.ui.home.*
 
+private enum class ROUTES {
+    SPLASH_SCREEN,
+    PAGE_VIEW_SCREEN,
+    WELCOME_SCREEN,
+    SIGN_IN_SCREEN,
+    SIGN_UP_SCREEN,
+    RESET_PASSWORD_SCREEN,
+    EMAIL_VERIFICATION_SCREEN,
+    CHANGE_PASSWORD_SCREEN,
+    HOME_SCREEN,
+}
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun MyNavHost(navHostController: NavHostController) {
-    AnimatedNavHost(navController = navHostController, startDestination = "HomeNavigation") {
-        composable("SplashScreen", exitTransition = { fadeOut(tween(400)) + slideOutVertically(tween(400), targetOffsetY = {-400})  }) {
+    AnimatedNavHost(
+        navController = navHostController,
+        startDestination = ROUTES.SPLASH_SCREEN.name
+    ) {
+        composable(
+            route = ROUTES.SPLASH_SCREEN.name,
+            exitTransition = {
+                fadeOut(tween(400)) + slideOutVertically(
+                    tween(400),
+                    targetOffsetY = { -400 })
+            }) {
             SplashScreen(
                 navigateToPageView = {
                     navHostController.popBackStack()
-                    navHostController.navigate("PageViewScreen")
+                    navHostController.navigate(route = ROUTES.PAGE_VIEW_SCREEN.name)
                 }
             )
         }
 
-        composable("PageViewScreen",
+        composable(route = ROUTES.PAGE_VIEW_SCREEN.name,
             exitTransition = {
                 slideOutHorizontally(
                     animationSpec = tween(300),
@@ -38,12 +58,12 @@ fun MyNavHost(navHostController: NavHostController) {
             PageViewScreen(
                 navigateToWelcomeScreen = {
                     navHostController.popBackStack()
-                    navHostController.navigate("WelcomeScreen")
+                    navHostController.navigate(route = ROUTES.WELCOME_SCREEN.name)
                 }
             )
         }
 
-        composable(route = "WelcomeScreen",
+        composable(route = ROUTES.WELCOME_SCREEN.name,
             enterTransition = {
                 slideInHorizontally(animationSpec = tween(300), initialOffsetX = { 300 }) + fadeIn(
                     tween(300)
@@ -63,14 +83,14 @@ fun MyNavHost(navHostController: NavHostController) {
             }) {
             WelcomeScreen(
                 navigateToSignIn = {
-                    navHostController.navigate("SignInScreen")
+                    navHostController.navigate(route = ROUTES.SIGN_IN_SCREEN.name)
                 },
                 navigateToSignUp = {
-                    navHostController.navigate("SignUpScreen")
+                    navHostController.navigate(route = ROUTES.SIGN_UP_SCREEN.name)
                 })
         }
 
-        composable(route = "SignInScreen",
+        composable(route = ROUTES.SIGN_IN_SCREEN.name,
             popEnterTransition = {
                 slideInHorizontally(animationSpec = tween(300), initialOffsetX = { -300 }) + fadeIn(
                     tween(300)
@@ -96,26 +116,26 @@ fun MyNavHost(navHostController: NavHostController) {
                 )
             }) {
             SignInScreen(navigateToResetPasswordScreen = {
-                navHostController.navigate("ResetPasswordScreen")
+                navHostController.navigate(route = ROUTES.RESET_PASSWORD_SCREEN.name)
 
             }, navigateToSignUpScreen = {
-                navHostController.navigate("SignUpScreen") {
-                    popUpTo("WelcomeScreen")
+                navHostController.navigate(route = ROUTES.SIGN_UP_SCREEN.name) {
+                    popUpTo(route = ROUTES.WELCOME_SCREEN.name)
                 }
             }, navigateToHomeScreen = {
-                navHostController.navigate("HomeNavigation")
+                navHostController.navigate(route = ROUTES.HOME_SCREEN.name)
             })
         }
 
-        composable("SignUpScreen") {
+        composable(route = ROUTES.SIGN_UP_SCREEN.name) {
             SignUpScreen {
-                navHostController.navigate("SignInScreen") {
-                    popUpTo("WelcomeScreen")
+                navHostController.navigate(route = ROUTES.SIGN_IN_SCREEN.name) {
+                    popUpTo(route = ROUTES.WELCOME_SCREEN.name)
                 }
             }
         }
 
-        composable("ResetPasswordScreen",
+        composable(route = ROUTES.RESET_PASSWORD_SCREEN.name,
             popEnterTransition = {
                 slideInHorizontally(animationSpec = tween(300), initialOffsetX = { -300 }) + fadeIn(
                     tween(300)
@@ -141,11 +161,11 @@ fun MyNavHost(navHostController: NavHostController) {
                 )
             }) {
             ResetPasswordScreen {
-                navHostController.navigate("EmailVerificationScreen")
+                navHostController.navigate(route = ROUTES.EMAIL_VERIFICATION_SCREEN.name)
             }
         }
 
-        composable("EmailVerificationScreen",
+        composable(route = ROUTES.EMAIL_VERIFICATION_SCREEN.name,
             popEnterTransition = {
                 slideInHorizontally(animationSpec = tween(300), initialOffsetX = { -300 }) + fadeIn(
                     tween(300)
@@ -171,11 +191,11 @@ fun MyNavHost(navHostController: NavHostController) {
                 )
             }) {
             EmailVerificationScreen {
-                navHostController.navigate("ChangePasswordScreen")
+                navHostController.navigate(route = ROUTES.CHANGE_PASSWORD_SCREEN.name)
             }
         }
 
-        composable("ChangePasswordScreen",
+        composable(route = ROUTES.CHANGE_PASSWORD_SCREEN.name,
             enterTransition = {
                 slideInHorizontally(animationSpec = tween(300), initialOffsetX = { 300 }) + fadeIn(
                     tween(300)
@@ -191,11 +211,12 @@ fun MyNavHost(navHostController: NavHostController) {
             ChangePasswordScreen()
         }
 
-        composable("HomeNavigation"){
+        composable(route = ROUTES.HOME_SCREEN.name) {
             HomeNavigation()
         }
 
-/*        composable("HomeScreen"){
+/*
+        composable("HomeScreen"){
             HomeScreen()
         }
 
@@ -205,10 +226,11 @@ fun MyNavHost(navHostController: NavHostController) {
 
         composable("MenuScreen"){
             MenuScreen()
-        }*/
+        }
 
-        composable("ProductDetailsScreen"){
+        composable("ProductDetailsScreen") {
             ProductDetailsScreen()
         }
+ */
     }
 }
