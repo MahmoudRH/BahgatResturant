@@ -96,7 +96,7 @@ fun FilledButton(modifier: Modifier = Modifier, text: String, fontSize: Int = 16
 }
 
 @Composable
-fun BorderButton(modifier: Modifier, text: String, color: Color = orange, onClick: () -> Unit) {
+fun BorderButton(modifier: Modifier = Modifier, text: String, color: Color = orange, fontSize: Int = 16 ,onClick: () -> Unit) {
     OutlinedButton(
         modifier = modifier
             .height(56.dp)
@@ -110,7 +110,7 @@ fun BorderButton(modifier: Modifier, text: String, color: Color = orange, onClic
             text = text,
             style = TextStyle(
                 color = color,
-                fontSize = 16.sp,
+                fontSize = fontSize.sp,
                 fontFamily = metropolisFontFamily,
                 fontWeight = FontWeight.SemiBold
             )
@@ -403,42 +403,42 @@ fun SearchField() {
 }
 
 @Composable
-fun TopBar(backIcon: Boolean = true, title: String = "", iconColor: Color = primaryFontColor) {
-    var persint = 0f
-    if (title != "") {
-        persint = 0.85f
-    } else {
-        persint = 0.9f
-    }
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 20.dp, start = 20.dp, end = 20.dp),
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        if (backIcon) {
-            Icon(
-                painter = painterResource(id = R.drawable.ic_back),
-                contentDescription = null,
-                tint = iconColor
-            )
-            Spacer(modifier = Modifier.width(20.dp))
-        }
-        Text(
-            title,
-            style = TextStyle(
-                fontFamily = metropolisFontFamily,
-                color = primaryFontColor,
-                fontSize = 24.sp
-            )
-        )
-        Spacer(modifier = Modifier.fillMaxWidth(persint))
-        Icon(
-            painter = painterResource(id = R.drawable.ic_cart),
-            contentDescription = null,
-            tint = iconColor
-        )
-    }
+fun AppTopBar(backIcon: Boolean = false, title: String, action: Boolean = true) {
+    TopAppBar(
+        title = { Text(text = title, style = TextStyle(fontSize = 24.sp, fontFamily = metropolisFontFamily, color = primaryFontColor)) },
+        navigationIcon = {
+            if (backIcon){
+                IconButton(
+                    onClick = { },
+                ){
+                    Icon(
+                        painter = painterResource(id = com.mahmoudrh.bahgatresturant.R.drawable.ic_back),
+                        contentDescription = "",
+                        tint = primaryFontColor
+                    )
+                }
+            }else{
+                null
+            }
+        },
+        actions = {
+            if(action){
+                IconButton(
+                    onClick = { },
+                ){
+                    Icon(
+                        painter = painterResource(id = com.mahmoudrh.bahgatresturant.R.drawable.ic_cart),
+                        contentDescription = "",
+                        tint = primaryFontColor
+                    )
+                }
+            }else{
+                null
+            }
+        },
+        backgroundColor = white,
+        elevation = 0.dp
+    )
 }
 
 @Composable

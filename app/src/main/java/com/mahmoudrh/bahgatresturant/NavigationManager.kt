@@ -2,13 +2,11 @@ package com.mahmoudrh.bahgatresturant
 
 import androidx.compose.animation.*
 import androidx.compose.animation.core.tween
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.composable
-import com.mahmoudrh.bahgatresturant.ui.home.MenuDetailsScreen
-import com.mahmoudrh.bahgatresturant.ui.home.MenuScreen
-import com.mahmoudrh.bahgatresturant.ui.home.ProductDetailsScreen
 import com.mahmoudrh.bahgatresturant.ui.weclome.*
 import com.mahmoudrh.bahgatresturant.ui.authentication.*
 import com.mahmoudrh.bahgatresturant.ui.home.*
@@ -25,6 +23,7 @@ private enum class ROUTES {
     HOME_SCREEN,
 }
 
+@ExperimentalMaterialApi
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun MyNavHost(navHostController: NavHostController) {
@@ -215,22 +214,9 @@ fun MyNavHost(navHostController: NavHostController) {
             HomeNavigation()
         }
 
-/*
-        composable("HomeScreen"){
-            HomeScreen()
+        composable(route = "CheckoutScreen") {
+            CheckoutScreen()
         }
 
-        composable("MenuDetailsScreen"){
-            MenuDetailsScreen()
-        }
-
-        composable("MenuScreen"){
-            MenuScreen()
-        }
-
-        composable("ProductDetailsScreen") {
-            ProductDetailsScreen()
-        }
- */
     }
 }

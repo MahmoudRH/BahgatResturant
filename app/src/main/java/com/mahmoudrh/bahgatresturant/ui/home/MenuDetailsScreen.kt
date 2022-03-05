@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.sp
 import com.mahmoudrh.bahgatresturant.R
 import com.mahmoudrh.bahgatresturant.model.Product
 import com.mahmoudrh.bahgatresturant.ui.SearchField
-import com.mahmoudrh.bahgatresturant.ui.TopBar
+import com.mahmoudrh.bahgatresturant.ui.AppTopBar
 import com.mahmoudrh.bahgatresturant.ui.ui.theme.*
 
 @Composable
@@ -58,7 +58,7 @@ fun MenuDetailsScreen() {
         LazyColumn {
             //-> Top Section
             item {
-                TopBar(title = "Desserts")
+                AppTopBar(title = "Desserts")
                 Spacer(modifier = Modifier.height(20.dp))
                 SearchField()
                 Spacer(modifier = Modifier.height(20.dp))

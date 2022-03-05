@@ -1,6 +1,7 @@
 package com.mahmoudrh.bahgatresturant.ui.home
 
 
+import MoreDetailsScreen
 import androidx.compose.animation.*
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.*
@@ -18,10 +19,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
+import androidx.navigation.navArgument
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.composable
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import com.mahmoudrh.bahgatresturant.R
+import com.mahmoudrh.bahgatresturant.model.More
 import com.mahmoudrh.bahgatresturant.ui.ui.theme.metropolisFontFamily
 import com.mahmoudrh.bahgatresturant.ui.ui.theme.orange
 import com.mahmoudrh.bahgatresturant.ui.ui.theme.placeholderColor
@@ -214,7 +218,21 @@ private fun HomeNavHost(navHostController: NavHostController) {
             popEnterTransition = { fadeIn(tween(300)) },
             exitTransition = { fadeOut(tween(300)) },
         ) {
-            MoreScreen()
+            MoreScreen {content ->
+                navHostController.currentBackStackEntry?.arguments?.putSerializable("content", content)
+                navHostController.navigate("MoreDetailsScreen/{content}")
+            }
+        }
+
+        composable(
+            route = "MoreDetailsScreen/{content}",
+            enterTransition = { fadeIn(tween(300)) },
+            exitTransition = { fadeOut(tween(300)) },
+        ) {
+            val content = navHostController.previousBackStackEntry?.arguments?.getSerializable("content") as More?
+            if (content != null) {
+                MoreDetailsScreen(content)
+            }
         }
 
     }

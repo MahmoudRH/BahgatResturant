@@ -10,14 +10,14 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mahmoudrh.bahgatresturant.ui.FilledButton
-import com.mahmoudrh.bahgatresturant.ui.TopBar
+import com.mahmoudrh.bahgatresturant.ui.AppTopBar
 import com.mahmoudrh.bahgatresturant.ui.ui.theme.*
 
 @Composable
 fun OffersScreen(){
     BahgatResturantTheme() {
         Column() {
-            TopBar(title = "Latest Offers", backIcon = false)
+            AppTopBar(title = "Latest Offers", backIcon = false)
             Spacer(modifier = Modifier.height(15.dp))
             Text(
                 modifier = Modifier.padding(horizontal = 20.dp),

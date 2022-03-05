@@ -23,7 +23,7 @@ import androidx.compose.ui.unit.sp
 import com.mahmoudrh.bahgatresturant.R
 import com.mahmoudrh.bahgatresturant.ui.AppTextField
 import com.mahmoudrh.bahgatresturant.ui.FilledButton
-import com.mahmoudrh.bahgatresturant.ui.TopBar
+import com.mahmoudrh.bahgatresturant.ui.AppTopBar
 import com.mahmoudrh.bahgatresturant.ui.ui.theme.*
 
 @OptIn(ExperimentalComposeUiApi::class)
@@ -32,7 +32,7 @@ fun ProfileScreen(){
     val scrollState = rememberScrollState()
     BahgatResturantTheme {
         Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.verticalScroll(state = scrollState)) {
-            TopBar(title = "Profile", backIcon = false)
+            AppTopBar(title = "Profile", backIcon = false)
             Spacer(modifier = Modifier.height(30.dp))
             ProfileImage(image = R.drawable.profile_picture)
             TextButtonWithImage(textButton = "edit Profile", image = R.drawable.ic_edit){}

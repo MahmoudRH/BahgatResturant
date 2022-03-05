@@ -14,7 +14,9 @@ import com.mahmoudrh.bahgatresturant.MyNavHost
 import com.mahmoudrh.bahgatresturant.ui.ui.theme.BahgatResturantTheme
 
 class MainActivity : ComponentActivity() {
-    @OptIn(ExperimentalAnimationApi::class)
+    @OptIn(ExperimentalAnimationApi::class,
+        androidx.compose.material.ExperimentalMaterialApi::class
+    )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {

@@ -19,7 +19,7 @@ import com.mahmoudrh.bahgatresturant.R
 import com.mahmoudrh.bahgatresturant.ui.ButtonWithImage
 import com.mahmoudrh.bahgatresturant.ui.FilledButton
 import com.mahmoudrh.bahgatresturant.ui.IconButton
-import com.mahmoudrh.bahgatresturant.ui.TopBar
+import com.mahmoudrh.bahgatresturant.ui.AppTopBar
 import com.mahmoudrh.bahgatresturant.ui.ui.theme.*
 
 @Composable
@@ -37,7 +37,7 @@ fun ProductDetailsScreen() {
                 contentScale = ContentScale.Crop,
             )
             BlackShadow2()
-            TopBar(iconColor = white)
+//            AppTopBar(title = "")
             Box(
                 modifier = Modifier
                     .fillMaxWidth()

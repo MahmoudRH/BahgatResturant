@@ -18,22 +18,24 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mahmoudrh.bahgatresturant.R
 import com.mahmoudrh.bahgatresturant.model.More
-import com.mahmoudrh.bahgatresturant.ui.TopBar
+import com.mahmoudrh.bahgatresturant.model.more.*
+import com.mahmoudrh.bahgatresturant.ui.AppTopBar
 
 import com.mahmoudrh.bahgatresturant.ui.ui.theme.*
 
 @Composable
-fun MoreScreen() {
+fun MoreScreen(onMoreItemClick: (content: More) -> Unit) {
     val list = arrayOf(
-        More(icon = R.drawable.ic_income, name = "Payment Details"),
-        More(icon = R.drawable.ic_shopping_bag, name = "My Orders"),
-        More(icon = R.drawable.ic_notification, name = "Notifications"),
-        More(icon = R.drawable.ic_inbox, name = "Inbox"),
-        More(icon = R.drawable.ic_info, name = "About Us"),
+        Payment(name = "Payment Method", icon = R.drawable.ic_income),
+        MyOrder(name = "MyOrder", icon = R.drawable.ic_shopping_bag),
+        Notification(name = "Notification", icon = R.drawable.ic_notification),
+        Inbox(name = "Inbox", icon = R.drawable.ic_inbox),
+        About(name = "About Us", icon = R.drawable.ic_info),
     )
+
     BahgatResturantTheme {
         Column {
-            TopBar(title = "More", backIcon = false)
+            AppTopBar(title = "More", backIcon = false)
             Spacer(modifier = Modifier.height(15.dp))
             LazyColumn(
                 modifier = Modifier
@@ -46,7 +48,7 @@ fun MoreScreen() {
                             modifier = Modifier
                                 .padding(start = 15.dp, end = 15.dp, top = 10.dp, bottom = 10.dp)
                                 .fillMaxWidth()
-                                .clickable {  }
+                                .clickable { onMoreItemClick(item.setObjectToSend()) }
                                 .background(gray2, shape = RoundedCornerShape(7.dp))
                         ) {
                             Row(

@@ -23,7 +23,7 @@ import com.mahmoudrh.bahgatresturant.R
 import com.mahmoudrh.bahgatresturant.model.Menu
 import com.mahmoudrh.bahgatresturant.ui.IconButton
 import com.mahmoudrh.bahgatresturant.ui.SearchField
-import com.mahmoudrh.bahgatresturant.ui.TopBar
+import com.mahmoudrh.bahgatresturant.ui.AppTopBar
 
 import com.mahmoudrh.bahgatresturant.ui.ui.theme.*
 
@@ -38,7 +38,7 @@ fun MenuScreen() {
 
     BahgatResturantTheme() {
         Column() {
-            TopBar(backIcon = false, title = "Menu")
+            AppTopBar(backIcon = false, title = "Menu")
             Spacer(modifier = Modifier.height(20.dp))
             SearchField()
             Spacer(modifier = Modifier.height(20.dp))
