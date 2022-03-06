@@ -1,5 +1,7 @@
 package com.mahmoudrh.bahgatresturant
 
+import android.os.Build
+import android.util.Log
 import androidx.compose.animation.*
 import androidx.compose.animation.core.tween
 import androidx.compose.material.ExperimentalMaterialApi
@@ -29,7 +31,8 @@ private enum class ROUTES {
 fun MyNavHost(navHostController: NavHostController) {
     AnimatedNavHost(
         navController = navHostController,
-        startDestination = ROUTES.SPLASH_SCREEN.name
+//        startDestination = setStartDestination()
+        startDestination = ROUTES.RESET_PASSWORD_SCREEN.name
     ) {
         composable(
             route = ROUTES.SPLASH_SCREEN.name,
@@ -217,6 +220,15 @@ fun MyNavHost(navHostController: NavHostController) {
         composable(route = "CheckoutScreen") {
             CheckoutScreen()
         }
-
     }
 }
+
+private fun setStartDestination(): String{
+
+    return if (Build.VERSION.SDK_INT >= 31){
+        ROUTES.PAGE_VIEW_SCREEN.name
+    }else{
+        ROUTES.SPLASH_SCREEN.name
+    }
+}
+

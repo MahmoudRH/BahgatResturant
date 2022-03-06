@@ -35,6 +35,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mahmoudrh.bahgatresturant.R
 import com.mahmoudrh.bahgatresturant.ui.ui.theme.*
+import com.mahmoudrh.bahgatresturant.viewmodels.ResetPasswordViewModel
 import kotlinx.coroutines.launch
 
 @Composable
@@ -73,7 +74,12 @@ fun Logo(modifier: Modifier) {
 }
 
 @Composable
-fun FilledButton(modifier: Modifier = Modifier, text: String, fontSize: Int = 16, onClick: () -> Unit) {
+fun FilledButton(
+    modifier: Modifier = Modifier,
+    text: String,
+    fontSize: Int = 16,
+    onClick: () -> Unit
+) {
     Button(
         modifier = modifier
             .height(56.dp)
@@ -96,7 +102,13 @@ fun FilledButton(modifier: Modifier = Modifier, text: String, fontSize: Int = 16
 }
 
 @Composable
-fun BorderButton(modifier: Modifier = Modifier, text: String, color: Color = orange, fontSize: Int = 16 ,onClick: () -> Unit) {
+fun BorderButton(
+    modifier: Modifier = Modifier,
+    text: String,
+    color: Color = orange,
+    fontSize: Int = 16,
+    onClick: () -> Unit
+) {
     OutlinedButton(
         modifier = modifier
             .height(56.dp)
@@ -259,8 +271,12 @@ fun ButtonWithImage(
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
-fun VTextFiled(action: ImeAction = ImeAction.Next) {
-    var value by remember { mutableStateOf("") }
+fun VTextFiled(
+    value: String,
+    onValueChanged: (String) -> Unit,
+    action: ImeAction = ImeAction.Next
+) {
+//    var value by remember { mutableStateOf("") }
     val keyboardController = LocalSoftwareKeyboardController.current
     val focusManager = LocalFocusManager.current
     BasicTextField(
@@ -268,19 +284,25 @@ fun VTextFiled(action: ImeAction = ImeAction.Next) {
             .width(56.dp)
             .height(56.dp)
             .onKeyEvent {
-                if (it.key.keyCode != Key.Backspace.keyCode)
+                if (it.key.keyCode != Key.Backspace.keyCode) {
                     if (action == ImeAction.Next) {
                         focusManager.moveFocus(FocusDirection.Right)
                     } else {
                         keyboardController?.hide()
                         focusManager.clearFocus()
                     }
+                } else {
+                    if (value.isEmpty()) {
+                        focusManager.moveFocus(FocusDirection.Left)
+                    }
+                }
                 true
             },
         value = value,
-        onValueChange = {
-            value = if (it.isNotEmpty()) it[0].toString() else ""
-        },
+        onValueChange = { onValueChanged(it) },
+//        {
+//            value = if (it.isNotEmpty()) it[0].toString() else ""
+//        }
         decorationBox = { innerTextField ->
             Box(
                 Modifier
@@ -322,20 +344,23 @@ fun VTextFiled(action: ImeAction = ImeAction.Next) {
 }
 
 @Composable
-fun VerifyTextField() {
+fun VerifyTextField(viewModel: ResetPasswordViewModel, codeLength: Int = 4) {
     Row(
-        horizontalArrangement = Arrangement.Center,
+        modifier = Modifier.padding(horizontal = 28.dp),
+        horizontalArrangement = Arrangement.spacedBy(28.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Spacer(modifier = Modifier.width(28.dp))
-        VTextFiled()
-        Spacer(modifier = Modifier.width(28.dp))
-        VTextFiled()
-        Spacer(modifier = Modifier.width(28.dp))
-        VTextFiled()
-        Spacer(modifier = Modifier.width(28.dp))
-        VTextFiled(action = ImeAction.Done)
-        Spacer(modifier = Modifier.width(28.dp))
+        for (i in 0..codeLength - 2) {
+            VTextFiled(
+                value = viewModel.verificationCodeValue(i),
+                onValueChanged = { viewModel.onVerificationCodeChanged(it,index =  i) }
+            )
+        }
+        VTextFiled(
+            action = ImeAction.Done,
+            value = viewModel.verificationCodeValue(codeLength - 1),
+            onValueChanged = { viewModel.onVerificationCodeChanged(it, index = codeLength - 1) }
+        )
     }
 }
 
@@ -404,40 +429,46 @@ fun SearchField() {
 
 @Composable
 fun AppTopBar(backIcon: Boolean = false, title: String, action: Boolean = true) {
+
     TopAppBar(
-        title = { Text(text = title, style = TextStyle(fontSize = 24.sp, fontFamily = metropolisFontFamily, color = primaryFontColor)) },
-        navigationIcon = {
-            if (backIcon){
-                IconButton(
-                    onClick = { },
-                ){
-                    Icon(
-                        painter = painterResource(id = com.mahmoudrh.bahgatresturant.R.drawable.ic_back),
-                        contentDescription = "",
-                        tint = primaryFontColor
-                    )
-                }
-            }else{
-                null
-            }
+        title = {
+            Text(
+                text = title,
+                style = TextStyle(
+                    fontSize = 24.sp,
+                    fontFamily = metropolisFontFamily,
+                    color = primaryFontColor
+                )
+            )
         },
         actions = {
-            if(action){
+            if (action) {
                 IconButton(
                     onClick = { },
-                ){
+                ) {
                     Icon(
                         painter = painterResource(id = com.mahmoudrh.bahgatresturant.R.drawable.ic_cart),
                         contentDescription = "",
                         tint = primaryFontColor
                     )
                 }
-            }else{
-                null
             }
         },
         backgroundColor = white,
-        elevation = 0.dp
+        elevation = 0.dp,
+        navigationIcon = if (backIcon) {
+            {
+                IconButton(
+                    onClick = { },
+                ) {
+                    Icon(
+                        painter = painterResource(id = com.mahmoudrh.bahgatresturant.R.drawable.ic_back),
+                        contentDescription = "",
+                        tint = primaryFontColor
+                    )
+                }
+            }
+        } else null
     )
 }
 
