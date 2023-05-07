@@ -8,9 +8,9 @@ Jetpack Compose is Android’s modern toolkit for building native UI. It simplif
 
 
 # Screenshots: 
-PageView  |  Welcome  | Signup |
+OnBoarding  |  Welcome  | Signup |
 :-------: | :-------: | :-----: 
-![pageview](screenshots/pageview_screen.png)  | ![welcome](screenshots/welcome_screen.png) | ![signup](screenshots/signup_screen.png)
+![onBoarding](screenshots/pageview_screen.png)  | ![welcome](screenshots/welcome_screen.png) | ![signup](screenshots/signup_screen.png)
 
 Login | OTP
 :----:|:---: 
