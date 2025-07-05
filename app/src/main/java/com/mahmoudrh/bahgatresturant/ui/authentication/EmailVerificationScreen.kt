@@ -40,63 +40,61 @@ fun EmailVerificationScreen(navigateToChangePasswordScreen: () -> Unit) {
     val scaffoldState = rememberScaffoldState()
     val scope = rememberCoroutineScope()
     var otp by remember { mutableStateOf("") }
-    BahgatResturantTheme {
-        Scaffold(scaffoldState = scaffoldState) { _ ->
-            Column(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalAlignment = Alignment.CenterHorizontally
+    Scaffold(scaffoldState = scaffoldState) { _ ->
+        Column(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Spacer(modifier = Modifier.height(60.dp))
+            Text(
+                modifier = Modifier.padding(horizontal = 50.dp),
+                text = stringResource(R.string.we_have_sent_an_otp_to_your_mobile),
+                style = TextStyle(
+                    fontSize = 25.sp,
+                    fontFamily = metropolisFontFamily,
+                    color = primaryFontColor,
+                    textAlign = TextAlign.Center
+                )
+            )
+            Spacer(modifier = Modifier.height(12.dp))
+            Text(
+                text = stringResource(R.string.please_check_your_mobile_number),
+                style = TextStyle(
+                    fontSize = 14.sp,
+                    color = secondaryFontColor,
+                    fontFamily = metropolisFontFamily,
+                    textAlign = TextAlign.Center
+                ),
+                modifier = Modifier.padding(horizontal = 50.dp)
+            )
+            Spacer(modifier = Modifier.height(54.dp))
+            VerifyTextField(value = otp, onValueChanged = { otp = it }, codeLength = 4)
+            Spacer(modifier = Modifier.height(36.dp))
+            FilledButton(
+                text = stringResource(R.string.next),
+                modifier = Modifier.padding(horizontal = 34.dp)
             ) {
-                Spacer(modifier = Modifier.height(60.dp))
-                Text(
-                    modifier = Modifier.padding(horizontal = 50.dp),
-                    text = stringResource(R.string.we_have_sent_an_otp_to_your_mobile),
-                    style = TextStyle(
-                        fontSize = 25.sp,
-                        fontFamily = metropolisFontFamily,
-                        color = primaryFontColor,
-                        textAlign = TextAlign.Center
-                    )
-                )
-                Spacer(modifier = Modifier.height(12.dp))
-                Text(
-                    text = stringResource(R.string.please_check_your_mobile_number),
-                    style = TextStyle(
-                        fontSize = 14.sp,
-                        color = secondaryFontColor,
-                        fontFamily = metropolisFontFamily,
-                        textAlign = TextAlign.Center
-                    ),
-                    modifier = Modifier.padding(horizontal = 50.dp)
-                )
-                Spacer(modifier = Modifier.height(54.dp))
-                VerifyTextField(value = otp, onValueChanged = { otp = it }, codeLength = 4)
-                Spacer(modifier = Modifier.height(36.dp))
-                FilledButton(
-                    text = stringResource(R.string.next),
-                    modifier = Modifier.padding(horizontal = 34.dp)
-                ) {
-                    if (FakeOtpManager.checkVerificationCode(otp))
-                        navigateToChangePasswordScreen()
-                    else {
-                        scope.launch {
-                            scaffoldState.snackbarHostState.showSnackbar(
-                                context.getString(R.string.error_invalid_code),
-                                actionLabel = context.getString(R.string.try_again)
-                            )
-                        }
-                    }
-                }
-                Spacer(modifier = Modifier.height(32.dp))
-                Footer(
-                    text = stringResource(R.string.didn_t_receive),
-                    textButton = stringResource(R.string.click_here)
-                ) {
+                if (FakeOtpManager.checkVerificationCode(otp))
+                    navigateToChangePasswordScreen()
+                else {
                     scope.launch {
                         scaffoldState.snackbarHostState.showSnackbar(
-                            context.getString(R.string.verification_code_is) + FakeOtpManager.getVerificationCode(),
-                            actionLabel = context.getString(R.string.ok)
+                            context.getString(R.string.error_invalid_code),
+                            actionLabel = context.getString(R.string.try_again)
                         )
                     }
+                }
+            }
+            Spacer(modifier = Modifier.height(32.dp))
+            Footer(
+                text = stringResource(R.string.didn_t_receive),
+                textButton = stringResource(R.string.click_here)
+            ) {
+                scope.launch {
+                    scaffoldState.snackbarHostState.showSnackbar(
+                        context.getString(R.string.verification_code_is) + FakeOtpManager.getVerificationCode(),
+                        actionLabel = context.getString(R.string.ok)
+                    )
                 }
             }
         }
