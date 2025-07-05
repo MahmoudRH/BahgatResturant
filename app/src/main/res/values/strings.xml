@@ -43,4 +43,13 @@
     <string name="mobile_no">Mobile no</string>
     <string name="address">Address</string>
     <string name="already_have_an_account">Already have an Account?</string>
+    <string name="welcome_title_1">Find Food You Love</string>
+    <string name="welcome_title_2">Fast Delivery</string>
+    <string name="welcome_title_3">Live Tracking</string>
+    <string name="welcome_subtitle_1">Discover the best foods from over 1,000 restaurants and fast delivery to your doorstep</string>
+    <string name="welcome_subtitle_2">Fast food delivery to your home, office wherever you are</string>
+    <string name="welcome_subtitle_3">Real time tracking of your food on the app once you placed the order</string>
+    <string name="skip">Skip</string>
+    <string name="welcome_title">Discover the best foods from over 1,000 restaurants and fast delivery to your doorstep</string>
+    <string name="create_an_account">Create an Account</string>
 </resources>
