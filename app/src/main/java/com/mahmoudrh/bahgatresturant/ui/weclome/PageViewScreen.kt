@@ -2,8 +2,20 @@ package com.mahmoudrh.bahgatresturant.ui.weclome
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
@@ -12,41 +24,60 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.google.accompanist.pager.ExperimentalPagerApi
-import com.google.accompanist.pager.HorizontalPager
-import com.google.accompanist.pager.rememberPagerState
 import com.mahmoudrh.bahgatresturant.R
 import com.mahmoudrh.bahgatresturant.model.PageItem
-import com.mahmoudrh.bahgatresturant.ui.BorderButton
-import com.mahmoudrh.bahgatresturant.ui.FilledButton
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.*
+import com.mahmoudrh.bahgatresturant.ui.theme.metropolisFontFamily
+import com.mahmoudrh.bahgatresturant.ui.theme.orange
+import com.mahmoudrh.bahgatresturant.ui.theme.primaryFontColor
+import com.mahmoudrh.bahgatresturant.ui.theme.secondaryFontColor
+import com.mahmoudrh.bahgatresturant.ui.ui_components.buttons.FilledButton
+import com.mahmoudrh.bahgatresturant.ui.ui_components.buttons.OutlinedButton
 import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalPagerApi::class)
+private val list = arrayOf(
+    PageItem(
+        image = R.drawable.ic_page_1,
+        title = R.string.welcome_title_1,
+        subTitle = R.string.welcome_subtitle_1
+    ),
+    PageItem(
+        image = R.drawable.ic_page_2,
+        title = R.string.welcome_title_2,
+        subTitle = R.string.welcome_subtitle_2
+    ),
+    PageItem(
+        image = R.drawable.ic_page_3,
+        title = R.string.welcome_title_3,
+        subTitle = R.string.welcome_subtitle_3
+    )
+)
+
 @Composable
-fun PageViewScreen(navigateToWelcomeScreen: () -> Unit){
-    val pagerState = rememberPagerState()
+fun PageViewScreen(navigateToWelcomeScreen: () -> Unit) {
+    val pagerState = rememberPagerState { list.size }
     val scope = rememberCoroutineScope()
-    val list = arrayOf(PageItem(image = R.drawable.ic_page_1, title = "Find Food You Love", subTitle = "Discover the best foods from over 1,000 restaurants and fast delivery to your doorstep"), PageItem(image = R.drawable.ic_page_2, title = "Fast Delivery", subTitle = "Fast food delivery to your home, office wherever you are"), PageItem(image = R.drawable.ic_page_3, title = "Live Tracking", subTitle = "Real time tracking of your food on the app once you placed the order"))
-    BahgatResturantTheme {
-        HorizontalPager(
-            count = list.size,
-            state = pagerState
-        ) { index ->
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        HorizontalPager(state = pagerState) { index ->
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
-                Image(painter = painterResource(id = list[index].image), contentDescription = null)
+                Image(painter = painterResource(list[index].image), contentDescription = null)
                 Spacer(modifier = Modifier.height(30.dp))
                 Indicator(count = list.size, index = index)
                 Spacer(modifier = Modifier.height(35.dp))
                 Text(
-                    text = list[index].title,
+                    text = stringResource(list[index].title),
                     style = TextStyle(
                         fontSize = 28.sp,
                         fontFamily = metropolisFontFamily,
@@ -55,7 +86,7 @@ fun PageViewScreen(navigateToWelcomeScreen: () -> Unit){
                 )
                 Spacer(modifier = Modifier.height(33.dp))
                 Text(
-                    text = list[index].subTitle,
+                    text = stringResource(list[index].subTitle),
                     style = TextStyle(
                         fontSize = 13.sp,
                         fontFamily = metropolisFontFamily,
@@ -64,28 +95,36 @@ fun PageViewScreen(navigateToWelcomeScreen: () -> Unit){
                     ),
                     modifier = Modifier.padding(horizontal = 45.dp)
                 )
-                Spacer(modifier = Modifier.height(40.dp))
-                FilledButton(modifier = Modifier.padding(horizontal = 34.dp), text = "Next") {
-                    scope.launch {
-                        if (index < list.size - 1) {
-                            pagerState.animateScrollToPage(index + 1)
-                        } else {
-                            navigateToWelcomeScreen()
-                        }
-                    }
-                }
-                Spacer(modifier = Modifier.height(20.dp))
-
-                BorderButton(modifier = Modifier.padding(horizontal = 34.dp), text = "Skip", color = secondaryFontColor) {
-                    navigateToWelcomeScreen()
-                }
-                Spacer(modifier = Modifier.height(20.dp))
             }
         }
+        Spacer(modifier = Modifier.height(40.dp))
+        FilledButton(
+            modifier = Modifier.padding(horizontal = 34.dp),
+            text = stringResource(R.string.next)
+        ) {
+            scope.launch {
+                if (pagerState.currentPage < list.size - 1) {
+                    pagerState.animateScrollToPage(pagerState.currentPage + 1)
+                } else {
+                    navigateToWelcomeScreen()
+                }
+            }
+        }
+        Spacer(modifier = Modifier.height(20.dp))
+
+        OutlinedButton(
+            modifier = Modifier.padding(horizontal = 34.dp),
+            text = stringResource(R.string.skip),
+            color = secondaryFontColor
+        ) {
+            navigateToWelcomeScreen()
+        }
+        Spacer(modifier = Modifier.height(20.dp))
     }
 }
+
 @Composable
-fun Indicator(count: Int, index: Int) {
+private fun Indicator(count: Int, index: Int) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -103,4 +142,10 @@ fun Indicator(count: Int, index: Int) {
             Spacer(modifier = Modifier.size(5.dp))
         }
     }
+}
+
+@Preview
+@Composable
+private fun PageViewPrev() {
+    Surface() { PageViewScreen { } }
 }

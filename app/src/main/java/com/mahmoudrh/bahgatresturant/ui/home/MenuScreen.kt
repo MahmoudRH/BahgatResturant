@@ -2,11 +2,20 @@ package com.mahmoudrh.bahgatresturant.ui.home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -17,39 +26,40 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mahmoudrh.bahgatresturant.R
 import com.mahmoudrh.bahgatresturant.model.Menu
-import com.mahmoudrh.bahgatresturant.ui.IconButton
-import com.mahmoudrh.bahgatresturant.ui.SearchField
-import com.mahmoudrh.bahgatresturant.ui.AppTopBar
+import com.mahmoudrh.bahgatresturant.ui.theme.metropolisFontFamily
+import com.mahmoudrh.bahgatresturant.ui.theme.orange
+import com.mahmoudrh.bahgatresturant.ui.theme.primaryFontColor
+import com.mahmoudrh.bahgatresturant.ui.theme.white
+import com.mahmoudrh.bahgatresturant.ui.ui_components.AppTopBar
+import com.mahmoudrh.bahgatresturant.ui.ui_components.SearchField
+import com.mahmoudrh.bahgatresturant.ui.ui_components.buttons.IconButton
 
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.*
+private val list = arrayOf(
+    Menu(image = R.drawable.item_a, name = "Food", numOfItem = 120),
+    Menu(image = R.drawable.item_b, name = "Beverages", numOfItem = 250),
+    Menu(image = R.drawable.item_b, name = "Testtt", numOfItem = 920),
+    Menu(image = R.drawable.item_c, name = "Desserts", numOfItem = 520),
+)
 
 @Composable
 fun MenuScreen() {
-    val list = arrayOf(
-        Menu(image = R.drawable.item_a, name = "Food", numOfItem = 120),
-        Menu(image = R.drawable.item_b, name = "Beverages", numOfItem = 250),
-        Menu(image = R.drawable.item_b, name = "Testtt", numOfItem = 920),
-        Menu(image = R.drawable.item_c, name = "Desserts", numOfItem = 520),
-    )
-
-    BahgatResturantTheme() {
-        Column() {
-            AppTopBar(backIcon = false, title = "Menu")
-            Spacer(modifier = Modifier.height(20.dp))
-            SearchField()
-            Spacer(modifier = Modifier.height(20.dp))
-            LazyColumn {
-                itemsIndexed(list) { index, item ->
-                    MenuItem(index, list)
-                }
+    Column(Modifier.fillMaxSize()) {
+        AppTopBar(backIcon = false, title = "Menu")
+        Spacer(modifier = Modifier.height(20.dp))
+        SearchField()
+        Spacer(modifier = Modifier.height(20.dp))
+        LazyColumn {
+            itemsIndexed(list) { index, item ->
+                MenuItem(index, list)
             }
         }
-
     }
+
 }
 
 @Composable
@@ -75,7 +85,7 @@ fun MenuItem(index: Int, list: Array<Menu>) {
 }
 
 @Composable
-fun CircleImage(modifier: Modifier = Modifier, image: Int) {
+private fun CircleImage(modifier: Modifier = Modifier, image: Int) {
     Box(
         modifier = modifier
             .height(70.dp)
@@ -94,7 +104,7 @@ fun CircleImage(modifier: Modifier = Modifier, image: Int) {
 }
 
 @Composable
-fun OrangeBox(index: Int, list: Array<Menu>) {
+private fun OrangeBox(index: Int, list: Array<Menu>) {
     var roundTob = 0
     var roundBottom = 0
     if (index == 0) {
@@ -118,7 +128,7 @@ fun OrangeBox(index: Int, list: Array<Menu>) {
 }
 
 @Composable
-fun WhiteBox(index: Int, list: Array<Menu>, modifier: Modifier) {
+private fun WhiteBox(index: Int, list: Array<Menu>, modifier: Modifier) {
     Box(
         modifier = modifier
             .fillMaxWidth(0.85f)
@@ -158,4 +168,10 @@ fun WhiteBox(index: Int, list: Array<Menu>, modifier: Modifier) {
             Spacer(modifier = Modifier.height(5.dp))
         }
     }
+}
+
+@Preview
+@Composable
+private fun MenuPrev() {
+    Surface { MenuScreen() }
 }
