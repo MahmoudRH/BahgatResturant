@@ -32,12 +32,12 @@ import com.mahmoudrh.bahgatresturant.model.more.MyOrder
 import com.mahmoudrh.bahgatresturant.model.more.Notification
 import com.mahmoudrh.bahgatresturant.model.more.Payment
 import com.mahmoudrh.bahgatresturant.ui.ui_components.AppTopBar
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.BahgatResturantTheme
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.gray2
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.gray3
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.metropolisFontFamily
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.primaryFontColor
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.secondaryFontColor
+import com.mahmoudrh.bahgatresturant.ui.theme.BahgatResturantTheme
+import com.mahmoudrh.bahgatresturant.ui.theme.gray2
+import com.mahmoudrh.bahgatresturant.ui.theme.gray3
+import com.mahmoudrh.bahgatresturant.ui.theme.metropolisFontFamily
+import com.mahmoudrh.bahgatresturant.ui.theme.primaryFontColor
+import com.mahmoudrh.bahgatresturant.ui.theme.secondaryFontColor
 
 @Composable
 fun MoreScreen(onMoreItemClick: (content: More) -> Unit) {

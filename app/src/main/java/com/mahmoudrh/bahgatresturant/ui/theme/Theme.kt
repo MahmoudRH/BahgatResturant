@@ -1,4 +1,4 @@
-package com.mahmoudrh.bahgatresturant.ui.ui.theme
+package com.mahmoudrh.bahgatresturant.ui.theme
 
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.lightColors

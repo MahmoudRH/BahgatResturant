@@ -10,7 +10,7 @@ import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
 import com.mahmoudrh.bahgatresturant.MyNavHost
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.BahgatResturantTheme
+import com.mahmoudrh.bahgatresturant.ui.theme.BahgatResturantTheme
 
 class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterialApi::class)

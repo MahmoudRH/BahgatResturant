@@ -13,9 +13,9 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.metropolisFontFamily
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.orange
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.secondaryFontColor
+import com.mahmoudrh.bahgatresturant.ui.theme.metropolisFontFamily
+import com.mahmoudrh.bahgatresturant.ui.theme.orange
+import com.mahmoudrh.bahgatresturant.ui.theme.secondaryFontColor
 
 @Composable
 fun Footer(text: String, textButton: String, onClick: () -> Unit) {

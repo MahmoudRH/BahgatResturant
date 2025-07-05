@@ -25,13 +25,13 @@ import androidx.compose.ui.unit.sp
 import com.mahmoudrh.bahgatresturant.R
 import com.mahmoudrh.bahgatresturant.model.More
 import com.mahmoudrh.bahgatresturant.ui.ui_components.AppTopBar
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.BahgatResturantTheme
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.gray2
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.gray4
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.metropolisFontFamily
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.orange
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.placeholderColor
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.primaryFontColor
+import com.mahmoudrh.bahgatresturant.ui.theme.BahgatResturantTheme
+import com.mahmoudrh.bahgatresturant.ui.theme.gray2
+import com.mahmoudrh.bahgatresturant.ui.theme.gray4
+import com.mahmoudrh.bahgatresturant.ui.theme.metropolisFontFamily
+import com.mahmoudrh.bahgatresturant.ui.theme.orange
+import com.mahmoudrh.bahgatresturant.ui.theme.placeholderColor
+import com.mahmoudrh.bahgatresturant.ui.theme.primaryFontColor
 
 data class InboxItem(val title: String, val subTitle: String, val date: String)
 

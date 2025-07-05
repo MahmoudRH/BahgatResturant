@@ -32,10 +32,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mahmoudrh.bahgatresturant.R
 import com.mahmoudrh.bahgatresturant.model.PageItem
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.metropolisFontFamily
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.orange
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.primaryFontColor
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.secondaryFontColor
+import com.mahmoudrh.bahgatresturant.ui.theme.metropolisFontFamily
+import com.mahmoudrh.bahgatresturant.ui.theme.orange
+import com.mahmoudrh.bahgatresturant.ui.theme.primaryFontColor
+import com.mahmoudrh.bahgatresturant.ui.theme.secondaryFontColor
 import com.mahmoudrh.bahgatresturant.ui.ui_components.buttons.FilledButton
 import com.mahmoudrh.bahgatresturant.ui.ui_components.buttons.OutlinedButton
 import kotlinx.coroutines.launch

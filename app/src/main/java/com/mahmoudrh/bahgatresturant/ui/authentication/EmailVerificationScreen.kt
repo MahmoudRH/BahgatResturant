@@ -27,10 +27,9 @@ import com.mahmoudrh.bahgatresturant.R
 import com.mahmoudrh.bahgatresturant.ui.ui_components.buttons.FilledButton
 import com.mahmoudrh.bahgatresturant.ui.ui_components.Footer
 import com.mahmoudrh.bahgatresturant.ui.ui_components.VerifyTextField
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.BahgatResturantTheme
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.metropolisFontFamily
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.primaryFontColor
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.secondaryFontColor
+import com.mahmoudrh.bahgatresturant.ui.theme.metropolisFontFamily
+import com.mahmoudrh.bahgatresturant.ui.theme.primaryFontColor
+import com.mahmoudrh.bahgatresturant.ui.theme.secondaryFontColor
 import com.mahmoudrh.bahgatresturant.utils.FakeOtpManager
 import kotlinx.coroutines.launch
 

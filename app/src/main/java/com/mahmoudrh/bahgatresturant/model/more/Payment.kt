@@ -29,10 +29,10 @@ import com.mahmoudrh.bahgatresturant.model.More
 import com.mahmoudrh.bahgatresturant.ui.ui_components.AppTopBar
 import com.mahmoudrh.bahgatresturant.ui.ui_components.buttons.OutlinedButton
 import com.mahmoudrh.bahgatresturant.ui.ui_components.buttons.ButtonWithImage
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.gray
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.metropolisFontFamily
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.orange
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.primaryFontColor
+import com.mahmoudrh.bahgatresturant.ui.theme.gray
+import com.mahmoudrh.bahgatresturant.ui.theme.metropolisFontFamily
+import com.mahmoudrh.bahgatresturant.ui.theme.orange
+import com.mahmoudrh.bahgatresturant.ui.theme.primaryFontColor
 
 data class PaymentItem(val image: Int, val num: String)
 

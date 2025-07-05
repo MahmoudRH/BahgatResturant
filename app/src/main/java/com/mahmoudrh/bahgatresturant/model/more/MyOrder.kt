@@ -31,11 +31,11 @@ import com.mahmoudrh.bahgatresturant.model.More
 import com.mahmoudrh.bahgatresturant.model.Order
 import com.mahmoudrh.bahgatresturant.ui.ui_components.AppTopBar
 import com.mahmoudrh.bahgatresturant.ui.ui_components.buttons.FilledButton
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.gray2
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.metropolisFontFamily
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.orange
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.primaryFontColor
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.secondaryFontColor
+import com.mahmoudrh.bahgatresturant.ui.theme.gray2
+import com.mahmoudrh.bahgatresturant.ui.theme.metropolisFontFamily
+import com.mahmoudrh.bahgatresturant.ui.theme.orange
+import com.mahmoudrh.bahgatresturant.ui.theme.primaryFontColor
+import com.mahmoudrh.bahgatresturant.ui.theme.secondaryFontColor
 
 class MyOrder(override var icon: Int = 0, override var name: String = "") : More {
 

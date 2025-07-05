@@ -20,10 +20,10 @@ import androidx.compose.ui.unit.sp
 import com.mahmoudrh.bahgatresturant.R
 import com.mahmoudrh.bahgatresturant.model.More
 import com.mahmoudrh.bahgatresturant.ui.ui_components.AppTopBar
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.BahgatResturantTheme
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.metropolisFontFamily
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.orange
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.primaryFontColor
+import com.mahmoudrh.bahgatresturant.ui.theme.BahgatResturantTheme
+import com.mahmoudrh.bahgatresturant.ui.theme.metropolisFontFamily
+import com.mahmoudrh.bahgatresturant.ui.theme.orange
+import com.mahmoudrh.bahgatresturant.ui.theme.primaryFontColor
 
 class About(override var icon: Int = 0, override var name: String = "") : More {
 

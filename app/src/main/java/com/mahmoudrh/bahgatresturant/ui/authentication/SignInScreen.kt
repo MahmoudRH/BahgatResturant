@@ -23,11 +23,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mahmoudrh.bahgatresturant.R
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.blue
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.metropolisFontFamily
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.primaryFontColor
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.red
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.secondaryFontColor
+import com.mahmoudrh.bahgatresturant.ui.theme.blue
+import com.mahmoudrh.bahgatresturant.ui.theme.metropolisFontFamily
+import com.mahmoudrh.bahgatresturant.ui.theme.primaryFontColor
+import com.mahmoudrh.bahgatresturant.ui.theme.red
+import com.mahmoudrh.bahgatresturant.ui.theme.secondaryFontColor
 import com.mahmoudrh.bahgatresturant.ui.ui_components.AppTextField
 import com.mahmoudrh.bahgatresturant.ui.ui_components.Footer
 import com.mahmoudrh.bahgatresturant.ui.ui_components.buttons.ButtonWithImage

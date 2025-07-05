@@ -41,15 +41,15 @@ import com.mahmoudrh.bahgatresturant.R
 import com.mahmoudrh.bahgatresturant.ui.ui_components.buttons.ButtonWithImage
 import com.mahmoudrh.bahgatresturant.ui.ui_components.buttons.FilledButton
 import com.mahmoudrh.bahgatresturant.ui.ui_components.buttons.IconButton
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.BahgatResturantTheme
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.black
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.cabinFontFamily
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.gray
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.metropolisFontFamily
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.orange
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.primaryFontColor
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.secondaryFontColor
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.white
+import com.mahmoudrh.bahgatresturant.ui.theme.BahgatResturantTheme
+import com.mahmoudrh.bahgatresturant.ui.theme.black
+import com.mahmoudrh.bahgatresturant.ui.theme.cabinFontFamily
+import com.mahmoudrh.bahgatresturant.ui.theme.gray
+import com.mahmoudrh.bahgatresturant.ui.theme.metropolisFontFamily
+import com.mahmoudrh.bahgatresturant.ui.theme.orange
+import com.mahmoudrh.bahgatresturant.ui.theme.primaryFontColor
+import com.mahmoudrh.bahgatresturant.ui.theme.secondaryFontColor
+import com.mahmoudrh.bahgatresturant.ui.theme.white
 
 @Composable
 fun ProductDetailsScreen() {

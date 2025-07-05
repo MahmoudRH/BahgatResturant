@@ -37,10 +37,10 @@ import com.mahmoudrh.bahgatresturant.R
 import com.mahmoudrh.bahgatresturant.model.MealKind
 import com.mahmoudrh.bahgatresturant.model.PopularRestaurant
 import com.mahmoudrh.bahgatresturant.ui.ui_components.SearchField
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.metropolisFontFamily
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.orange
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.primaryFontColor
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.secondaryFontColor
+import com.mahmoudrh.bahgatresturant.ui.theme.metropolisFontFamily
+import com.mahmoudrh.bahgatresturant.ui.theme.orange
+import com.mahmoudrh.bahgatresturant.ui.theme.primaryFontColor
+import com.mahmoudrh.bahgatresturant.ui.theme.secondaryFontColor
 
 val testList = listOf(
     MealKind("Offers", R.drawable.offers),

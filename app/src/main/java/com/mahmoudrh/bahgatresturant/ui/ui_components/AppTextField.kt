@@ -30,11 +30,11 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.gray
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.metropolisFontFamily
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.orange
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.placeholderColor
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.primaryFontColor
+import com.mahmoudrh.bahgatresturant.ui.theme.gray
+import com.mahmoudrh.bahgatresturant.ui.theme.metropolisFontFamily
+import com.mahmoudrh.bahgatresturant.ui.theme.orange
+import com.mahmoudrh.bahgatresturant.ui.theme.placeholderColor
+import com.mahmoudrh.bahgatresturant.ui.theme.primaryFontColor
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalFoundationApi::class)

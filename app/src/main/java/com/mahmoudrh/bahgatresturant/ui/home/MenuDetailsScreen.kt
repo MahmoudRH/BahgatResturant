@@ -29,11 +29,11 @@ import com.mahmoudrh.bahgatresturant.R
 import com.mahmoudrh.bahgatresturant.model.Product
 import com.mahmoudrh.bahgatresturant.ui.ui_components.AppTopBar
 import com.mahmoudrh.bahgatresturant.ui.ui_components.SearchField
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.BahgatResturantTheme
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.black
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.metropolisFontFamily
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.orange
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.white
+import com.mahmoudrh.bahgatresturant.ui.theme.BahgatResturantTheme
+import com.mahmoudrh.bahgatresturant.ui.theme.black
+import com.mahmoudrh.bahgatresturant.ui.theme.metropolisFontFamily
+import com.mahmoudrh.bahgatresturant.ui.theme.orange
+import com.mahmoudrh.bahgatresturant.ui.theme.white
 
 @Composable
 fun MenuDetailsScreen() {

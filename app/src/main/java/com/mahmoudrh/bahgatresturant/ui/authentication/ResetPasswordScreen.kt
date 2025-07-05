@@ -3,7 +3,6 @@ package com.mahmoudrh.bahgatresturant.ui.authentication
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Surface
@@ -23,10 +22,9 @@ import androidx.compose.ui.unit.sp
 import com.mahmoudrh.bahgatresturant.R
 import com.mahmoudrh.bahgatresturant.ui.ui_components.AppTextField
 import com.mahmoudrh.bahgatresturant.ui.ui_components.buttons.FilledButton
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.BahgatResturantTheme
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.metropolisFontFamily
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.primaryFontColor
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.secondaryFontColor
+import com.mahmoudrh.bahgatresturant.ui.theme.metropolisFontFamily
+import com.mahmoudrh.bahgatresturant.ui.theme.primaryFontColor
+import com.mahmoudrh.bahgatresturant.ui.theme.secondaryFontColor
 
 
 @OptIn(ExperimentalComposeUiApi::class)
