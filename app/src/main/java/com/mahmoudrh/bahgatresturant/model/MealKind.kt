@@ -1,3 +1,9 @@
 package com.mahmoudrh.bahgatresturant.model
 
-data class MealKind(val name: String , val image: Int)
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
+
+data class MealKind(
+    @StringRes val name: Int,
+    @DrawableRes val image: Int
+)

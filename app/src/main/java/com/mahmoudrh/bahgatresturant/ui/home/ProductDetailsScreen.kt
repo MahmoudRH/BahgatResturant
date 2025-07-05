@@ -21,6 +21,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Divider
 import androidx.compose.material.DropdownMenu
 import androidx.compose.material.DropdownMenuItem
+import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -33,8 +34,10 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mahmoudrh.bahgatresturant.R
@@ -62,11 +65,12 @@ fun ProductDetailsScreen() {
             Image(
                 painter = painterResource(id = R.drawable.restaurent_b),
                 contentDescription = null,
-                modifier = Modifier.fillMaxWidth().height(360.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(360.dp),
                 contentScale = ContentScale.Crop,
             )
             BlackShadow2()
-//            AppTopBar(title = "")
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -76,7 +80,7 @@ fun ProductDetailsScreen() {
             ) {
                 Column(modifier = Modifier.verticalScroll(state = scrollState)) {
                     Text(
-                        "Tandoori Chicken Pizza",
+                        stringResource(R.string.tandoori_chicken_pizza),
                         modifier = Modifier.padding(top = 29.dp, start = 20.dp),
                         style = TextStyle(
                             fontSize = 22.sp,
@@ -90,7 +94,7 @@ fun ProductDetailsScreen() {
                         Column() {
                             //Rating bar
                             Text(
-                                text = "4 Star Ratings",
+                                text = stringResource(R.string._4_star_ratings),
                                 style = TextStyle(
                                     fontSize = 11.sp,
                                     fontFamily = metropolisFontFamily,
@@ -101,7 +105,7 @@ fun ProductDetailsScreen() {
                         Spacer(modifier = Modifier.fillMaxWidth(0.55f))
                         Column(horizontalAlignment = Alignment.End) {
                             Text(
-                                "RS. 750",
+                                text = stringResource(R.string.rs_750),
                                 style = TextStyle(
                                     fontSize = 31.sp,
                                     fontFamily = metropolisFontFamily,
@@ -110,7 +114,7 @@ fun ProductDetailsScreen() {
                                 )
                             )
                             Text(
-                                "/ per Portion",
+                                text = stringResource(R.string.per_portion),
                                 style = TextStyle(
                                     fontSize = 12.sp,
                                     fontFamily = cabinFontFamily,
@@ -122,7 +126,7 @@ fun ProductDetailsScreen() {
                     Spacer(modifier = Modifier.height(10.dp))
                     Text(
                         modifier = Modifier.padding(horizontal = 20.dp),
-                        text = "Description",
+                        text = stringResource(R.string.description),
                         style = TextStyle(
                             fontSize = 14.sp,
                             fontFamily = metropolisFontFamily,
@@ -133,7 +137,7 @@ fun ProductDetailsScreen() {
                     Spacer(modifier = Modifier.height(10.dp))
                     Text(
                         modifier = Modifier.padding(horizontal = 20.dp),
-                        text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare leo non mollis id cursus. Eu euismod faucibus in leo malesuada",
+                        text = stringResource(R.string.lorem),
                         style = TextStyle(
                             fontSize = 12.sp,
                             fontFamily = metropolisFontFamily,
@@ -145,7 +149,7 @@ fun ProductDetailsScreen() {
                     Spacer(modifier = Modifier.height(15.dp))
                     Text(
                         modifier = Modifier.padding(horizontal = 20.dp),
-                        text = "Customize your Order",
+                        text = stringResource(R.string.customize_your_order),
                         style = TextStyle(
                             fontSize = 14.sp,
                             fontFamily = metropolisFontFamily,
@@ -154,16 +158,18 @@ fun ProductDetailsScreen() {
                         )
                     )
                     Spacer(modifier = Modifier.height(20.dp))
-                    Dropdown(sizeList, "- Select the size of portion -")
+                    Dropdown(sizeList, stringResource(R.string.select_the_size_of_portion))
                     Spacer(modifier = Modifier.height(15.dp))
-                    Dropdown(ingredientsList, "- Select the ingredients -")
+                    Dropdown(ingredientsList, stringResource(R.string.select_the_ingredients))
                     Spacer(modifier = Modifier.height(24.dp))
                     NumberOfItem()
                     Spacer(modifier = Modifier.height(27.dp))
                     TotalPrice()
                 }
             }
-            Box(modifier = Modifier.align(Alignment.TopEnd).padding(end = 30.dp)) {
+            Box(modifier = Modifier
+                .align(Alignment.TopEnd)
+                .padding(end = 30.dp)) {
                 Column() {
                     Spacer(modifier = Modifier.fillMaxHeight(0.315f))
                     IconButton(image = R.drawable.ic_favorite){}
@@ -265,14 +271,14 @@ fun TotalPrice(){
                     .padding(horizontal = 55.dp, vertical = 20.dp)
             ) {
                 Text(
-                    text = "Total Price", style = TextStyle(
+                    text = stringResource(R.string.total_price), style = TextStyle(
                         fontSize = 12.sp,
                         fontFamily = metropolisFontFamily,
                         color = primaryFontColor,
                     )
                 )
                 Spacer(modifier = Modifier.height(5.dp))
-                Text(text = "LKR 1500", style = TextStyle(
+                Text(text = stringResource(R.string.lkr_1500), style = TextStyle(
                     fontSize = 21.sp,
                     fontFamily = metropolisFontFamily,
                     color = primaryFontColor,
@@ -280,7 +286,7 @@ fun TotalPrice(){
                 ))
                 Spacer(modifier = Modifier.height(10.dp))
                 ButtonWithImage(
-                    text = "Add to Cart",
+                    text = stringResource(R.string.add_to_cart),
                     image = R.drawable.ic_buy,
                     color = orange,
                     modifier = Modifier
@@ -290,7 +296,9 @@ fun TotalPrice(){
             }
         }
 
-        IconButton(image = R.drawable.ic_cart, modifier = Modifier.align(Alignment.CenterEnd).padding(end = 20.dp)){}
+        IconButton(image = R.drawable.ic_cart, modifier = Modifier
+            .align(Alignment.CenterEnd)
+            .padding(end = 20.dp)){}
     }
 }
 
@@ -301,7 +309,7 @@ fun NumberOfItem(){
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
-            text = "Number of Portions",
+            text = stringResource(R.string.number_of_portions),
             style = TextStyle(
                 fontSize = 14.sp,
                 fontFamily = metropolisFontFamily,
@@ -343,4 +351,10 @@ fun NumberOfItem(){
                 .height(30.dp)
         ) {}
     }
+}
+
+@Preview
+@Composable
+private fun ProductDetailsPrev() {
+    Surface { ProductDetailsScreen() }
 }

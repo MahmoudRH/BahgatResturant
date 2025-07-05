@@ -1,9 +1,13 @@
 package com.mahmoudrh.bahgatresturant.model
 
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
+
 data class PopularRestaurant(
-    val name: String,
+    @StringRes val name: Int,
     val rate: Float,
     val rateCount: Int,
-    val foodKind: String,
-    val coverImage: Int
+    @StringRes val foodKind: Int,
+    @DrawableRes val coverImage: Int
 )
+

@@ -27,7 +27,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.mahmoudrh.bahgatresturant.model.More
+import com.mahmoudrh.bahgatresturant.model.more.More
 import com.mahmoudrh.bahgatresturant.model.Order
 import com.mahmoudrh.bahgatresturant.ui.ui_components.AppTopBar
 import com.mahmoudrh.bahgatresturant.ui.ui_components.buttons.FilledButton
@@ -46,12 +46,8 @@ class MyOrder(override var icon: Int = 0, override var name: String = "") : More
         Order("Beef Burger", 1, 16.0),
     )
 
-    override fun setObjectToSend(): More {
-        return MyOrder()
-    }
-
     @Composable
-    override fun setContent() {
+    override fun SetContent() {
         Scaffold(
             topBar = {
                 AppTopBar(title = "My Order")

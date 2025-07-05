@@ -1,12 +1,10 @@
+import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
-import com.mahmoudrh.bahgatresturant.model.More
-import com.mahmoudrh.bahgatresturant.ui.theme.BahgatResturantTheme
+import com.mahmoudrh.bahgatresturant.model.more.More
 
 @Composable
-fun MoreDetailsScreen(content: More){
-    BahgatResturantTheme {
-        val argument: More = content
-        argument.setContent()
-    }
+fun MoreDetailsScreen(content: More) {
+    val argument: More = content
+    Column { argument.SetContent() }
 }
 

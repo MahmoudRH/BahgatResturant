@@ -22,7 +22,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mahmoudrh.bahgatresturant.R
-import com.mahmoudrh.bahgatresturant.model.More
+import com.mahmoudrh.bahgatresturant.model.more.More
 import com.mahmoudrh.bahgatresturant.ui.ui_components.AppTopBar
 import com.mahmoudrh.bahgatresturant.ui.theme.BahgatResturantTheme
 import com.mahmoudrh.bahgatresturant.ui.theme.gray2
@@ -36,12 +36,9 @@ data class NotificationItem(val title: String, val date: String)
 
 class Notification(override var icon: Int = 0, override var name: String = "") : More {
 
-    override fun setObjectToSend(): More {
-        return Notification()
-    }
 
     @Composable
-    override fun setContent() {
+    override fun SetContent() {
         val list = listOf(
             NotificationItem("Your orders has been picked up", "12:00"),
             NotificationItem("Your orders has been picked up", "12:00"),

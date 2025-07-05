@@ -25,7 +25,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mahmoudrh.bahgatresturant.R
-import com.mahmoudrh.bahgatresturant.model.More
+import com.mahmoudrh.bahgatresturant.model.more.More
 import com.mahmoudrh.bahgatresturant.ui.ui_components.AppTopBar
 import com.mahmoudrh.bahgatresturant.ui.ui_components.buttons.OutlinedButton
 import com.mahmoudrh.bahgatresturant.ui.ui_components.buttons.ButtonWithImage
@@ -38,12 +38,8 @@ data class PaymentItem(val image: Int, val num: String)
 
 class Payment(override var icon: Int = 0, override var name: String = "") : More {
 
-    override fun setObjectToSend(): More {
-        return Payment()
-    }
-
     @Composable
-    override fun setContent() {
+    override fun SetContent() {
         val list = listOf(
             PaymentItem(R.drawable.visa, "123 456   789"),
             PaymentItem(R.drawable.visa, "123 456   789"),
@@ -51,7 +47,16 @@ class Payment(override var icon: Int = 0, override var name: String = "") : More
         )
         Column {
             AppTopBar(title = "Your Payments", backIcon = true)
-            Text("Customize your payment method", modifier = Modifier.padding(20.dp), style = TextStyle(color = primaryFontColor, fontWeight = FontWeight.Bold, fontFamily = metropolisFontFamily, fontSize = 15.sp))
+            Text(
+                "Customize your payment method",
+                modifier = Modifier.padding(20.dp),
+                style = TextStyle(
+                    color = primaryFontColor,
+                    fontWeight = FontWeight.Bold,
+                    fontFamily = metropolisFontFamily,
+                    fontSize = 15.sp
+                )
+            )
             Divider(modifier = Modifier.padding(start = 25.dp, end = 20.dp, bottom = 20.dp))
             Box(
                 modifier = Modifier
