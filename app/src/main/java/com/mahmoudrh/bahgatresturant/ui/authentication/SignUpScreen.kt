@@ -18,9 +18,9 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.mahmoudrh.bahgatresturant.ui.AppTextField
-import com.mahmoudrh.bahgatresturant.ui.FilledButton
-import com.mahmoudrh.bahgatresturant.ui.Footer
+import com.mahmoudrh.bahgatresturant.ui.ui_components.AppTextField
+import com.mahmoudrh.bahgatresturant.ui.ui_components.buttons.FilledButton
+import com.mahmoudrh.bahgatresturant.ui.ui_components.Footer
 import com.mahmoudrh.bahgatresturant.ui.ui.theme.BahgatResturantTheme
 import com.mahmoudrh.bahgatresturant.ui.ui.theme.metropolisFontFamily
 import com.mahmoudrh.bahgatresturant.ui.ui.theme.primaryFontColor

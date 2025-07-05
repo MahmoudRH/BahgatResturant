@@ -17,9 +17,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.mahmoudrh.bahgatresturant.ui.FilledButton
-import com.mahmoudrh.bahgatresturant.ui.Footer
-import com.mahmoudrh.bahgatresturant.ui.VerifyTextField
+import com.mahmoudrh.bahgatresturant.ui.ui_components.buttons.FilledButton
+import com.mahmoudrh.bahgatresturant.ui.ui_components.Footer
+import com.mahmoudrh.bahgatresturant.ui.ui_components.VerifyTextField
 import com.mahmoudrh.bahgatresturant.ui.ui.theme.BahgatResturantTheme
 import com.mahmoudrh.bahgatresturant.ui.ui.theme.metropolisFontFamily
 import com.mahmoudrh.bahgatresturant.ui.ui.theme.primaryFontColor

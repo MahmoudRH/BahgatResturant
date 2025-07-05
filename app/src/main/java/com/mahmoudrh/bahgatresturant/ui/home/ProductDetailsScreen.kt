@@ -38,9 +38,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mahmoudrh.bahgatresturant.R
-import com.mahmoudrh.bahgatresturant.ui.ButtonWithImage
-import com.mahmoudrh.bahgatresturant.ui.FilledButton
-import com.mahmoudrh.bahgatresturant.ui.IconButton
+import com.mahmoudrh.bahgatresturant.ui.ui_components.buttons.ButtonWithImage
+import com.mahmoudrh.bahgatresturant.ui.ui_components.buttons.FilledButton
+import com.mahmoudrh.bahgatresturant.ui.ui_components.buttons.IconButton
 import com.mahmoudrh.bahgatresturant.ui.ui.theme.BahgatResturantTheme
 import com.mahmoudrh.bahgatresturant.ui.ui.theme.black
 import com.mahmoudrh.bahgatresturant.ui.ui.theme.cabinFontFamily

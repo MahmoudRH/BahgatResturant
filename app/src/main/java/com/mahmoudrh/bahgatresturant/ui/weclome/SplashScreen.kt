@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import com.mahmoudrh.bahgatresturant.R
-import com.mahmoudrh.bahgatresturant.ui.Logo
+import com.mahmoudrh.bahgatresturant.ui.ui_components.Logo
 import com.mahmoudrh.bahgatresturant.ui.ui.theme.BahgatResturantTheme
 import kotlinx.coroutines.delay
 

@@ -28,8 +28,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mahmoudrh.bahgatresturant.R
 import com.mahmoudrh.bahgatresturant.model.PageItem
-import com.mahmoudrh.bahgatresturant.ui.BorderButton
-import com.mahmoudrh.bahgatresturant.ui.FilledButton
+import com.mahmoudrh.bahgatresturant.ui.ui_components.buttons.OutlinedButton
+import com.mahmoudrh.bahgatresturant.ui.ui_components.buttons.FilledButton
 import com.mahmoudrh.bahgatresturant.ui.ui.theme.BahgatResturantTheme
 import com.mahmoudrh.bahgatresturant.ui.ui.theme.metropolisFontFamily
 import com.mahmoudrh.bahgatresturant.ui.ui.theme.orange
@@ -84,7 +84,7 @@ fun PageViewScreen(navigateToWelcomeScreen: () -> Unit) {
                 }
                 Spacer(modifier = Modifier.height(20.dp))
 
-                BorderButton(
+                OutlinedButton(
                     modifier = Modifier.padding(horizontal = 34.dp),
                     text = "Skip",
                     color = secondaryFontColor

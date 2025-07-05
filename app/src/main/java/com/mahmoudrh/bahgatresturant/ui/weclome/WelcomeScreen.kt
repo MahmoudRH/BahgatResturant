@@ -21,9 +21,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mahmoudrh.bahgatresturant.R
-import com.mahmoudrh.bahgatresturant.ui.BorderButton
-import com.mahmoudrh.bahgatresturant.ui.FilledButton
-import com.mahmoudrh.bahgatresturant.ui.Logo
+import com.mahmoudrh.bahgatresturant.ui.ui_components.buttons.OutlinedButton
+import com.mahmoudrh.bahgatresturant.ui.ui_components.buttons.FilledButton
+import com.mahmoudrh.bahgatresturant.ui.ui_components.Logo
 import com.mahmoudrh.bahgatresturant.ui.ui.theme.BahgatResturantTheme
 import com.mahmoudrh.bahgatresturant.ui.ui.theme.metropolisFontFamily
 import com.mahmoudrh.bahgatresturant.ui.ui.theme.secondaryFontColor
@@ -58,7 +58,7 @@ fun WelcomeScreen(navigateToSignIn:()-> Unit , navigateToSignUp:()-> Unit) {
             ) {
                 navigateToSignIn()
             }
-            BorderButton(
+            OutlinedButton(
                 modifier = Modifier
                     .padding(horizontal = 34.dp, vertical = 24.dp),
                 text = "Create an Account",

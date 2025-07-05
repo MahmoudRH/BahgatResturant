@@ -7,4 +7,5 @@
     <string name="title_activity_email_verification">EmailVerificationActivity</string>
     <string name="title_activity_change_password">ChangePasswordActivity</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="icon">icon</string>
 </resources>

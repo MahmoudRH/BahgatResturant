@@ -26,9 +26,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mahmoudrh.bahgatresturant.R
 import com.mahmoudrh.bahgatresturant.model.More
-import com.mahmoudrh.bahgatresturant.ui.AppTopBar
-import com.mahmoudrh.bahgatresturant.ui.BorderButton
-import com.mahmoudrh.bahgatresturant.ui.ButtonWithImage
+import com.mahmoudrh.bahgatresturant.ui.ui_components.AppTopBar
+import com.mahmoudrh.bahgatresturant.ui.ui_components.buttons.OutlinedButton
+import com.mahmoudrh.bahgatresturant.ui.ui_components.buttons.ButtonWithImage
 import com.mahmoudrh.bahgatresturant.ui.ui.theme.gray
 import com.mahmoudrh.bahgatresturant.ui.ui.theme.metropolisFontFamily
 import com.mahmoudrh.bahgatresturant.ui.ui.theme.orange
@@ -73,7 +73,7 @@ class Payment(override var icon: Int = 0, override var name: String = "") : More
                             Spacer(modifier = Modifier.width(15.dp))
                             Text(text = item.num)
                             Spacer(modifier = Modifier.fillMaxWidth(0.5f))
-                            BorderButton(
+                            OutlinedButton(
                                 text = "Delete",
                                 modifier = Modifier.size(85.dp, 30.dp),
                                 fontSize = 13

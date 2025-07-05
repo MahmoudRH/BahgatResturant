@@ -38,10 +38,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mahmoudrh.bahgatresturant.R
-import com.mahmoudrh.bahgatresturant.ui.AppTextField
-import com.mahmoudrh.bahgatresturant.ui.AppTopBar
-import com.mahmoudrh.bahgatresturant.ui.ButtonWithImage
-import com.mahmoudrh.bahgatresturant.ui.FilledButton
+import com.mahmoudrh.bahgatresturant.ui.ui_components.AppTextField
+import com.mahmoudrh.bahgatresturant.ui.ui_components.AppTopBar
+import com.mahmoudrh.bahgatresturant.ui.ui_components.buttons.ButtonWithImage
+import com.mahmoudrh.bahgatresturant.ui.ui_components.buttons.FilledButton
 import com.mahmoudrh.bahgatresturant.ui.ui.theme.BahgatResturantTheme
 import com.mahmoudrh.bahgatresturant.ui.ui.theme.gray2
 import com.mahmoudrh.bahgatresturant.ui.ui.theme.metropolisFontFamily
