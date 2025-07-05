@@ -8,4 +8,15 @@
     <string name="title_activity_change_password">ChangePasswordActivity</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="icon">icon</string>
+    <string name="food_delivery">FOOD DELIVERY</string>
+    <string name="search_food">Search food</string>
+    <string name="we_have_sent_an_otp_to_your_mobile">We have sent an OTP to your Mobile</string>
+    <string name="please_check_your_mobile_number">Please check your mobile number 071*****12 continue to reset your password</string>
+    <string name="next">Next</string>
+    <string name="error_invalid_code">Error: Invalid Code</string>
+    <string name="try_again">Try Again</string>
+    <string name="click_here">Click Here</string>
+    <string name="didn_t_receive">Didn\'t Receive?</string>
+    <string name="verification_code_is">"Verification Code is: "</string>
+    <string name="ok">OK</string>
 </resources>

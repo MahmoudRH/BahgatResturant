@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -48,7 +49,7 @@ fun Logo(modifier: Modifier) {
         )
         Spacer(modifier = Modifier.size(7.dp))
         Text(
-            text = "FOOD DELIVERY",
+            text = stringResource(R.string.food_delivery),
             fontFamily = metropolisFontFamily,
             fontWeight = FontWeight.Normal,
             fontSize = 12.sp,
