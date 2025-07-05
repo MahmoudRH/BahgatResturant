@@ -1,6 +1,11 @@
 package com.mahmoudrh.bahgatresturant.ui.home
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Text
@@ -9,9 +14,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.mahmoudrh.bahgatresturant.ui.FilledButton
 import com.mahmoudrh.bahgatresturant.ui.AppTopBar
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.*
+import com.mahmoudrh.bahgatresturant.ui.FilledButton
+import com.mahmoudrh.bahgatresturant.ui.ui.theme.BahgatResturantTheme
+import com.mahmoudrh.bahgatresturant.ui.ui.theme.metropolisFontFamily
+import com.mahmoudrh.bahgatresturant.ui.ui.theme.secondaryFontColor
 
 @Composable
 fun OffersScreen(){

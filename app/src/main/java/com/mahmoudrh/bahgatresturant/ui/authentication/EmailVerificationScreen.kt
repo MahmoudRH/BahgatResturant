@@ -1,14 +1,17 @@
 package com.mahmoudrh.bahgatresturant.ui.authentication
 
-import android.widget.Toast
-import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
+import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -17,18 +20,20 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.mahmoudrh.bahgatresturant.ui.FilledButton
 import com.mahmoudrh.bahgatresturant.ui.Footer
 import com.mahmoudrh.bahgatresturant.ui.VerifyTextField
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.*
+import com.mahmoudrh.bahgatresturant.ui.ui.theme.BahgatResturantTheme
+import com.mahmoudrh.bahgatresturant.ui.ui.theme.metropolisFontFamily
+import com.mahmoudrh.bahgatresturant.ui.ui.theme.primaryFontColor
+import com.mahmoudrh.bahgatresturant.ui.ui.theme.secondaryFontColor
 import com.mahmoudrh.bahgatresturant.viewmodels.ResetPasswordViewModel
 import kotlinx.coroutines.launch
 
 @Composable
 fun EmailVerificationScreen(navigateToChangePasswordScreen: () -> Unit) {
     val resetPasswordViewModel = viewModel<ResetPasswordViewModel>()
-//    val snackbarHostState = remember { SnackbarHostState() }
     val scaffoldState = rememberScaffoldState()
     val scope = rememberCoroutineScope()
     BahgatResturantTheme {
-        Scaffold(scaffoldState = scaffoldState) {
+        Scaffold(scaffoldState = scaffoldState) {_->
             Column(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalAlignment = Alignment.CenterHorizontally

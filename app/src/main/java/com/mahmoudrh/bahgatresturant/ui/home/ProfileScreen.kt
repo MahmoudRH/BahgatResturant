@@ -2,7 +2,14 @@ package com.mahmoudrh.bahgatresturant.ui.home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -22,9 +29,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mahmoudrh.bahgatresturant.R
 import com.mahmoudrh.bahgatresturant.ui.AppTextField
-import com.mahmoudrh.bahgatresturant.ui.FilledButton
 import com.mahmoudrh.bahgatresturant.ui.AppTopBar
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.*
+import com.mahmoudrh.bahgatresturant.ui.FilledButton
+import com.mahmoudrh.bahgatresturant.ui.ui.theme.BahgatResturantTheme
+import com.mahmoudrh.bahgatresturant.ui.ui.theme.metropolisFontFamily
+import com.mahmoudrh.bahgatresturant.ui.ui.theme.orange
+import com.mahmoudrh.bahgatresturant.ui.ui.theme.primaryFontColor
+import com.mahmoudrh.bahgatresturant.ui.ui.theme.secondaryFontColor
+import com.mahmoudrh.bahgatresturant.ui.ui.theme.white
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable

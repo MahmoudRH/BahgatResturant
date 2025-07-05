@@ -1,17 +1,27 @@
 package com.mahmoudrh.bahgatresturant
 
-import android.os.Build
-import android.util.Log
-import androidx.compose.animation.*
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
+import androidx.compose.animation.slideOutVertically
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
-import com.google.accompanist.navigation.animation.AnimatedNavHost
-import com.google.accompanist.navigation.animation.composable
-import com.mahmoudrh.bahgatresturant.ui.weclome.*
-import com.mahmoudrh.bahgatresturant.ui.authentication.*
-import com.mahmoudrh.bahgatresturant.ui.home.*
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import com.mahmoudrh.bahgatresturant.ui.authentication.ChangePasswordScreen
+import com.mahmoudrh.bahgatresturant.ui.authentication.EmailVerificationScreen
+import com.mahmoudrh.bahgatresturant.ui.authentication.ResetPasswordScreen
+import com.mahmoudrh.bahgatresturant.ui.authentication.SignInScreen
+import com.mahmoudrh.bahgatresturant.ui.authentication.SignUpScreen
+import com.mahmoudrh.bahgatresturant.ui.home.CheckoutScreen
+import com.mahmoudrh.bahgatresturant.ui.home.HomeNavigation
+import com.mahmoudrh.bahgatresturant.ui.weclome.PageViewScreen
+import com.mahmoudrh.bahgatresturant.ui.weclome.SplashScreen
+import com.mahmoudrh.bahgatresturant.ui.weclome.WelcomeScreen
 
 private enum class ROUTES {
     SPLASH_SCREEN,
@@ -29,10 +39,9 @@ private enum class ROUTES {
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun MyNavHost(navHostController: NavHostController) {
-    AnimatedNavHost(
+    NavHost(
         navController = navHostController,
-//        startDestination = setStartDestination()
-        startDestination = ROUTES.RESET_PASSWORD_SCREEN.name
+        startDestination = ROUTES.SPLASH_SCREEN.name
     ) {
         composable(
             route = ROUTES.SPLASH_SCREEN.name,
@@ -223,12 +232,4 @@ fun MyNavHost(navHostController: NavHostController) {
     }
 }
 
-private fun setStartDestination(): String{
-
-    return if (Build.VERSION.SDK_INT >= 31){
-        ROUTES.PAGE_VIEW_SCREEN.name
-    }else{
-        ROUTES.SPLASH_SCREEN.name
-    }
-}
 

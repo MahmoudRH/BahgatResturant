@@ -2,7 +2,17 @@ package com.mahmoudrh.bahgatresturant.ui.weclome
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -16,27 +26,25 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.google.accompanist.pager.ExperimentalPagerApi
-import com.google.accompanist.pager.HorizontalPager
-import com.google.accompanist.pager.rememberPagerState
 import com.mahmoudrh.bahgatresturant.R
 import com.mahmoudrh.bahgatresturant.model.PageItem
 import com.mahmoudrh.bahgatresturant.ui.BorderButton
 import com.mahmoudrh.bahgatresturant.ui.FilledButton
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.*
+import com.mahmoudrh.bahgatresturant.ui.ui.theme.BahgatResturantTheme
+import com.mahmoudrh.bahgatresturant.ui.ui.theme.metropolisFontFamily
+import com.mahmoudrh.bahgatresturant.ui.ui.theme.orange
+import com.mahmoudrh.bahgatresturant.ui.ui.theme.primaryFontColor
+import com.mahmoudrh.bahgatresturant.ui.ui.theme.secondaryFontColor
 import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalPagerApi::class)
+private val list = arrayOf(PageItem(image = R.drawable.ic_page_1, title = "Find Food You Love", subTitle = "Discover the best foods from over 1,000 restaurants and fast delivery to your doorstep"), PageItem(image = R.drawable.ic_page_2, title = "Fast Delivery", subTitle = "Fast food delivery to your home, office wherever you are"), PageItem(image = R.drawable.ic_page_3, title = "Live Tracking", subTitle = "Real time tracking of your food on the app once you placed the order"))
+
 @Composable
-fun PageViewScreen(navigateToWelcomeScreen: () -> Unit){
-    val pagerState = rememberPagerState()
+fun PageViewScreen(navigateToWelcomeScreen: () -> Unit) {
+    val pagerState = rememberPagerState { list.size }
     val scope = rememberCoroutineScope()
-    val list = arrayOf(PageItem(image = R.drawable.ic_page_1, title = "Find Food You Love", subTitle = "Discover the best foods from over 1,000 restaurants and fast delivery to your doorstep"), PageItem(image = R.drawable.ic_page_2, title = "Fast Delivery", subTitle = "Fast food delivery to your home, office wherever you are"), PageItem(image = R.drawable.ic_page_3, title = "Live Tracking", subTitle = "Real time tracking of your food on the app once you placed the order"))
     BahgatResturantTheme {
-        HorizontalPager(
-            count = list.size,
-            state = pagerState
-        ) { index ->
+        HorizontalPager(state = pagerState) { index ->
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
@@ -76,7 +84,11 @@ fun PageViewScreen(navigateToWelcomeScreen: () -> Unit){
                 }
                 Spacer(modifier = Modifier.height(20.dp))
 
-                BorderButton(modifier = Modifier.padding(horizontal = 34.dp), text = "Skip", color = secondaryFontColor) {
+                BorderButton(
+                    modifier = Modifier.padding(horizontal = 34.dp),
+                    text = "Skip",
+                    color = secondaryFontColor
+                ) {
                     navigateToWelcomeScreen()
                 }
                 Spacer(modifier = Modifier.height(20.dp))
@@ -84,6 +96,7 @@ fun PageViewScreen(navigateToWelcomeScreen: () -> Unit){
         }
     }
 }
+
 @Composable
 fun Indicator(count: Int, index: Int) {
     Row(

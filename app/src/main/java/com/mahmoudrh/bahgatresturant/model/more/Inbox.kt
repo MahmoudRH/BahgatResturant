@@ -1,7 +1,15 @@
 package com.mahmoudrh.bahgatresturant.model.more
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Divider
@@ -17,7 +25,13 @@ import androidx.compose.ui.unit.sp
 import com.mahmoudrh.bahgatresturant.R
 import com.mahmoudrh.bahgatresturant.model.More
 import com.mahmoudrh.bahgatresturant.ui.AppTopBar
-import com.mahmoudrh.bahgatresturant.ui.ui.theme.*
+import com.mahmoudrh.bahgatresturant.ui.ui.theme.BahgatResturantTheme
+import com.mahmoudrh.bahgatresturant.ui.ui.theme.gray2
+import com.mahmoudrh.bahgatresturant.ui.ui.theme.gray4
+import com.mahmoudrh.bahgatresturant.ui.ui.theme.metropolisFontFamily
+import com.mahmoudrh.bahgatresturant.ui.ui.theme.orange
+import com.mahmoudrh.bahgatresturant.ui.ui.theme.placeholderColor
+import com.mahmoudrh.bahgatresturant.ui.ui.theme.primaryFontColor
 
 data class InboxItem(val title: String, val subTitle: String, val date: String)
 
